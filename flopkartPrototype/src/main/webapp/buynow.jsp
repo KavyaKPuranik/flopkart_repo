@@ -76,9 +76,10 @@
 						    </div>
 						    <div id="collapseThree" class="panel-collapse collapse">
 						      <div class="panel-body">
-						      <textarea rows="4" cols="50" id="shipAddress" required>
+						      <textarea rows="4" style="width:100%" id="shipAddress" required>
                               </textarea>
-                              <button type="submit">Next</button>
+                              <br/>
+                              <button type="submit" class="btn btn-primary">Next</button>
 						      </div>
 						    </div>
 					  	</div>
@@ -94,8 +95,32 @@
 						      </h4>
 						    </div>
 						    <div id="collapseFour" class="panel-collapse collapse">
-							    <div class="panel-body">
-							    Add order details
+							    <div class="panel-body">                                                                                 
+								  <div class="table-responsive">          
+								  <table class="table">
+								  <thead>
+							    	<tr>
+							    		<th>Item Name</th>
+							    		<th>Quantity</th>
+							    		<th>Price</th>
+							    	</tr>
+							    	</thead>
+							    	<tbody>
+							    	<tr>
+							    	<% int quant = Integer.parseInt(request.getParameter("quant"));%>
+							    	<% int listingamount = Integer.parseInt(request.getParameter("listingamount"));%>
+							    		
+							    		<td><%=request.getParameter("listingname") %></td>
+							    		<td><%=quant%></td>
+							    		<td><%=listingamount%></td>
+							    	</tr>
+							    	<tr>
+							    		<th colspan="2">Total Price:</th>
+							    		<% int total = quant * listingamount;%>
+							    		<th><%=total %></th>
+							    	</tr>
+							    	</tbody>
+							    </table></div>
 							    </div>
 					    	</div>
 						</div>
@@ -112,9 +137,13 @@
 						    </div>
 						    <div id="collapseFive" class="panel-collapse collapse">
 						      <div class="panel-body">
-						       <input type="radio" name="payment" value="Cash on delivery"> Cash on delivery<br>
-                               <input type="radio" name="payment" value="Online"> Online<br>
-						      <button type="submit" align="center" onclick="insertOrder();">Submit</button>
+						      <div class="radio">
+								  <label><input checked="checked"  type="radio" name="payment">Cash on delivery</label>
+								</div>
+								<div class="radio disabled">
+								  <label><input type="radio" name="payment" disabled>Flopkart Bank</label>
+								</div>
+						      <button type="submit" class="btn btn-primary" onclick="insertOrder();">Submit</button>
 						      </div>
 						    </div>
 					    </div>
@@ -150,15 +179,29 @@
 $(document).ready(function(){
     var ctxPath = "<%=request.getContextPath()%>";
 	headerFunctions(ctxPath);
-    var user = getCookie("user_details");
-    if (user != "") 
-    {
-    	$("#login_panel").hide();
-    } 
+	show_Welcome();
 })
 function buynowvalidation() 
 {
+	$('#loginModal').modal('toggle');
     checkCookie();
+    show_Welcome();
+}
+function show_Welcome()
+{
+
+    var user = getCookie("user_details");
+    if (user != "") 
+    {
+    	data = "<div class='panel-heading'>"+
+		    	"<h4 class='unicase-checkout-title'>"+
+			    	"<a data-toggle='collapse' class='collapsed' data-parent='#accordion' href='#collapseOne'>"+
+			    		"<span>1</span>Welcome, "+(JSON.parse(user)).firstName+
+			    	"</a>"+
+		    	"</h4>"+
+	    	"</div>"
+    	$("#login_panel").html(data);
+    } 
 }
 function buynowsignup()
 {
@@ -183,18 +226,23 @@ function submit_order()
 	});
 }
 
-function formToJSON() 
+function order_formToJSON() 
 {
-	var shipAddress = $("#shipAddress").val();
+	var shipAddress = $("#shipAddress").val().trim();
+	if(shipAddress=="")
+	{
+		alert("Please enter Address");
+		window.location.reload(true);
+		return false;
+	}
     var user = getCookie("user_details");
 	var userid = JSON.parse(user).id;
-	var OrderDate = "2018-03-16";
+	var OrderDate = "2018-03-15";
 	var Status = "Ordered";
-	var TotalAmount =1000;
-	alert(userid);
+	var TotalAmount =<%=total %>;
 	var flopkartOrder = JSON.stringify({
 	    "shippingAddress" : shipAddress,
-	    "UserId" : userid,
+	    "userId" : userid,
 	    "orderDate" : OrderDate,
 	    "status" : Status,
 	    "totalAmount" : TotalAmount  
@@ -204,9 +252,48 @@ function formToJSON()
 }
 
 function render(){
-	alert("Your Order has been placed");
-	window.location.href="index.jsp";//.reload(true);
-	//fetch();
+	var listingid = '<%=request.getParameter("listingid")%>';
+	var quant = '<%=quant%>';
+    var ctxPath = "<%=request.getContextPath()%>";
+	$.ajax(
+			{
+				type : 'GET',
+				url : ctxPath + "/webapi/items/listing/"+listingid,
+				dataType : "json", // data type of response
+				success : function(result)
+					{
+						for(var i=0; i<quant;i++)
+						{
+							$.ajax(
+									{
+										type : 'PUT',
+										contentType : 'application/json',
+										url : ctxPath + "/webapi/items/update/"+result[i].id,
+										data : update_item_formtoJSON(),
+										dataType : "json", // data type of response
+										success : function(data)
+											{
+											 		alert("success");	
+								            },
+								    	error:function(err) {
+// 								        	alert(JSON.stringify(err));
+								    	}
+									});	
+						}
+		            },
+		    	error:function(err) {
+// 		        	alert("lis"+JSON.stringify(err));
+		    	}
+			});
+	window.location.href="index.jsp";
+}
+
+function update_item_formtoJSON() 
+{
+	var flipkart_item = JSON.stringify({
+		"status": "Ordered"
+    	});
+	return flipkart_item;
 }
 
 function insertOrder()
@@ -217,7 +304,7 @@ function insertOrder()
 			type : 'POST',
 			contentType : 'application/json',
 			url : ctxPath + "/webapi/orders/create",
-			data : formToJSON(),
+			data : order_formToJSON(),
 			success : render(),
 			error: function() {
 				alert(JSON.stringify(err));

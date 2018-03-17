@@ -30,7 +30,7 @@ public class FlopkartOrderServices
 	}
 
 	@GET
-	@Path("/order/{id}")
+	@Path("/user/{id}")
 	@Produces("application/json")
 	public List<FlopkartOrder> getFlopkartbyUserId(@PathParam("id") int Userid)
 	{

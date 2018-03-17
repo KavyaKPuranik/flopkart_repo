@@ -17,14 +17,14 @@ String entity_name = "FlopkartOrder";
 		super.add(order);
 		return order;
 	}
-	/*public FlopkartOrder getFlopkartOrderById(int id)
+/*	public FlopkartOrder getFlopkartOrderById(int id)
 	{
 		return super.find(new FlopkartOrder(),id);
 	}*/
 	public List<FlopkartOrder> getFlopkartOrderByUserId(Integer UserId)
 	{
 		
-		return super.findAll(entity_name,"Userid", UserId);
+		return super.findAll(entity_name,"userid", UserId);
 	}
    /* public List<FlopkartOrder> getFlopkartOrderByorderDate(String orderDate)
 	{
