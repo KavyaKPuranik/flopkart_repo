@@ -14,7 +14,7 @@ public class FlopkartUser
 	private String phone;
 	private String pic_URL;
 	private String password;
-
+	private String address;
 	public int getId()
 	{
 		return id;
@@ -90,6 +90,15 @@ public class FlopkartUser
 		return password;
 	}
 	
+	
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
 	public String encodePassword(String password)
 	{

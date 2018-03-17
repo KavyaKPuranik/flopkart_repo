@@ -19,6 +19,6 @@
       <property name = "phone" column = "phone" type = "string"  unique="true"/>
       <property name = "pic_URL" column = "pic_URL" type = "string"/>
       <property name = "password" column = "password" type = "string"/>
-	 
+	  <property name = "address" column = "address" type = "string"/>
 	</class>
 </hibernate-mapping>
