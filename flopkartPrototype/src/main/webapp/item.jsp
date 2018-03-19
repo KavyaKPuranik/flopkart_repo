@@ -132,6 +132,9 @@
     	<input type="number" id="quant" name="quant" hidden="hidden">
     	<input type="text" name="listingname" id="listingname" hidden="hidden">
     	<input type="number" id="listingamount" name="listingamount" hidden="hidden">
+    	<input type="number" id="discounted" name="discounted" hidden="hidden">
+    	<input type="number" id="priced" name="priced" hidden="hidden">
+    	<input type="hidden" id= "sellername" name="sellername">
     </form>
     </div>
 </div><!-- /.gallery-holder -->        			
@@ -267,9 +270,10 @@ $(document).ready(function(){
 				$("#discountedprice").text(amount);
 				$("#price-strike").text(result.price);
 				$("#discount").text("Discount: "+result.discount+"%");
+				$("#priced").val(result.price);
+				$("#discounted").val(result.discount);
 				$("#listingamount").val(amount);
 				$("#listingname").val(result.listingName);
-				
 				var img_data = "<div id='owl-single-product'>"+
 				"    <div class='single-product-gallery-item' id='slide1'>"+
 				"        <a data-lightbox='image-1' data-title='Gallery' href='./images/products/p9.jpg'>"+
@@ -288,6 +292,7 @@ $(document).ready(function(){
 					{
 						var sellerData = "<div id='sellerData' style='color:green; font-size:15px'>Seller name:   "+res.firstName+" "+res.lastName+"</span>";
 						$("#product-info").append(sellerData);
+						$("#sellername").text(sellerData);
 					},
 					error : function(){
 						//alert("error");
@@ -297,6 +302,7 @@ $(document).ready(function(){
 	    	error:function() {
 	        	//alert("error occurred");
 	    	}
+			
 		});
 });
 

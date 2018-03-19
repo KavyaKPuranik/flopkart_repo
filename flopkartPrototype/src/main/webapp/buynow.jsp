@@ -103,25 +103,38 @@
 							    	<tr>
 							    		<th>Item Name</th>
 							    		<th>Quantity</th>
-							    		<th>Price</th>
+							    		<th>Marked Price</th>
+							    		<th>Discount</th>
+							    		<th>Discounted Price</th>
 							    	</tr>
 							    	</thead>
 							    	<tbody>
 							    	<tr>
 							    	<% int quant = Integer.parseInt(request.getParameter("quant"));%>
 							    	<% int listingamount = Integer.parseInt(request.getParameter("listingamount"));%>
-							    		
+							    	<% int discount=Integer.parseInt(request.getParameter("discounted"));%>
+							    	<% int price=Integer.parseInt(request.getParameter("priced"));%>
 							    		<td><%=request.getParameter("listingname") %></td>
 							    		<td><%=quant%></td>
+							    		<td><%=price%></td>
+							    		<td><%=discount%> %</td>
 							    		<td><%=listingamount%></td>
 							    	</tr>
 							    	<tr>
 							    		<th colspan="2">Total Price:</th>
 							    		<% int total = quant * listingamount;%>
+							    		<th></th>
+							    		
+							    		<th></th>
 							    		<th><%=total %></th>
 							    	</tr>
 							    	</tbody>
-							    </table></div>
+							    </table>
+							   </div>
+							   <div class="seller-info" id="seller-info" style='color:green; font-size:15px'>
+							   <% String sname=request.getParameter("sellername");%>
+							   Seller Name: <%=sname %>
+							   </div>
 							    </div>
 					    	</div>
 						</div>
@@ -249,14 +262,16 @@ function order_formToJSON()
 	    "status" : Status,
 	    "totalAmount" : TotalAmount  
 	});
-	alert(flopkartOrder);
+	//alert(flopkartOrder);
 	return flopkartOrder;
 }
 
 function render(){
 	var listingid = '<%=request.getParameter("listingid")%>';
 	var quant = '<%=quant%>';
-    var ctxPath = "<%=request.getContextPath()%>";
+	var price='<%=price%>';
+	var discount='<%=discount%>';    
+	var ctxPath = "<%=request.getContextPath()%>";
 	$.ajax(
 			{
 				type : 'GET',
@@ -287,7 +302,7 @@ function render(){
 // 		        	alert("lis"+JSON.stringify(err));
 		    	}
 			});
-	window.location.href="index.jsp";
+	window.location.href="myorder.jsp";
 }
 
 function update_item_formtoJSON() 
@@ -297,7 +312,6 @@ function update_item_formtoJSON()
     	});
 	return flipkart_item;
 }
-
 function insertOrder()
 {
 	var ctxPath = "<%=request.getContextPath()%>";
