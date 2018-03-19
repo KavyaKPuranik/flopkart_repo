@@ -177,7 +177,7 @@
             <!-- ============================================== IMAGE============================================== -->
             <div class="sidebar-widget wow fadeInUp" style="visibility: hidden; animation-name: none;">
             	
-              <h5 class="section-title">Hello Seller</h5>
+              <h5 class="section-title">Hello <label id="sellername" name="sellername" /></label></h5>
               <div class="widget-header">
                 <h4 class="widget-title" id="userID"></h4>
               </div>
@@ -481,7 +481,7 @@
 <script>
 $(document).ready(function(){
 	
- 	 checkCookie();
+ 	 	checkCookie();
 		var counter = 2;
 		var c = 1;
 		$('#cnt').val(c);
@@ -533,7 +533,9 @@ $(document).ready(function(){
 {
     var result = getCookie("seller_details");
     var user = JSON.parse(result);
-    alert(user.id);
+    document.getElementById("sellername").innerText = user.firstName;
+
+   // alert(user.id);
     if (user != "") 
     {
 		setCookie("seller_details", user, 10);
@@ -563,7 +565,8 @@ function resetCookie()
 
 
 function sellerId(user)
-{
+{	
+	
 	$('#sellerid').val(user.id);
 	//alert(user.id);
 	return true;

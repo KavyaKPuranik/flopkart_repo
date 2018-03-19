@@ -1,10 +1,11 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=branch 'master' of https\://github.com/KavyaKPuranik/flopkart_repo.git
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
 encoding//src/main/resources=UTF-8
-<<<<<<< HEAD
-encoding//src/main/webapp/sellerItemInsert.jsp=UTF-8
-=======
 encoding//src/main/webapp/cart.jsp=UTF-8
->>>>>>> branch 'master' of https://github.com/KavyaKPuranik/flopkart_repo.git
+encoding//src/main/webapp/myProfile.jsp=UTF-8
+encoding//src/main/webapp/sellerItemInsert.jsp=UTF-8
 encoding//src/test/java=UTF-8
 encoding/<project>=UTF-8

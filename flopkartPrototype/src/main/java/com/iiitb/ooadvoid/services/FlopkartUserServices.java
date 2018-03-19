@@ -36,7 +36,18 @@ public class FlopkartUserServices
 		FlopkartUser user = dao.getFlopkartUserById(id);
 		return user;
 	}
-
+	
+	@GET
+	@Path("/getfirstname/{firstname}")
+	@Produces("application/json")
+	public FlopkartUser getFlopkartUserByName(@PathParam("firstname") String firstname)
+	{
+		System.out.println("x");
+		FlopkartUserDAO dao=new FlopkartUserDAO();
+		System.out.println("x");
+		FlopkartUser user=dao.getFlopkartUserByName(firstname);
+		return user;
+	}
 	
 	@POST
 	@Path("/email")

@@ -9,7 +9,20 @@
      
     <%@include file="header.jsp" %>
      
+    
+    <div id="formdiv" style="margin-top:100px;margin-bottom:100px">
+    <center>
+<form method="post" action="afterpayment.jsp">
   
+  <input type="number" name="accountno" placeholder="Account Number" style="text-align:center;width:35%" >
+  <br>
+  
+  <input type="password" name="password" placeholder="Password" style="text-align:center;width:35%">
+  <br><br>
+  <input type="submit" value="submit" style="width:15%">
+</form>
+</center>
+</div>
      
     <%@include file="footer.jsp" %>
      

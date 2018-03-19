@@ -205,7 +205,7 @@ $(document).ready(function(){
 	$("#warning_email_new").hide();
 	$("#warning_phone_new").hide();
 });
-
+	
 function signupformToJSON() {
 	var fname = $("#f_name").val();
 	var lname = $("#l_name").val();
@@ -254,21 +254,42 @@ function signup(ctxPath) {
     else {
     	$("#warning_email_new").hide();
     }
+    var fname = $("#f_name").val();
 	$.ajax({
 		type : 'POST',
 		contentType : 'application/json',
 		url : ctxPath + "/webapi/users/create",
 		dataType : "json", // data type of response
 		data : signupformToJSON(),
-		success : renderDetails(),
+		success : renderDetails(fname,ctxPath),
 		error : function(){
-// 			alert("NOOOO");
+			alert("NOOOO");
 		}
 	});
 }
 
-function renderDetails(){
-	alert("Successfully registered new seller");
+function renderDetails(fname,ctxpath){
+	console.log("Successfully registered seller");
+	//console.log(fname);
+	var ctxPath = "<%=request.getContextPath()%>";
+	
+	console.log(ctxPath);
+	var path = ctxPath + "/webapi/users/getfirstname/"+fname;
+	console.log(path);
+	$.ajax({
+			type:'GET',
+			contentType:'application/json',
+			url: path,//+fname,
+			datatype:"json",
+			success: function(response) {
+						console.log(response.firstName);
+					},
+			error: function() {
+					console.log("err in renderDeails");
+					}
+	});
+	
+	console.log("after ajax call");
 	window.location.href="sellerHub.jsp";
 }
 </script>

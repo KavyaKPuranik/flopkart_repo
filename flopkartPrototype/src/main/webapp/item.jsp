@@ -62,7 +62,7 @@
         <div id="owl-single-product">
             <div class="single-product-gallery-item" id="slide1">
                 <a data-lightbox="image-1" data-title="Gallery" href="./images/products/p9.jpg">
-                    <img class="img-responsive" alt="" width="480px" src="./images/blank.gif" data-echo="./images/products/puma1.jpg" />
+                    <img class="img-responsive" alt="" width="480px" src="./images/blank.gif" />
                 </a>
             </div><!-- /.single-product-gallery-item -->
 
@@ -121,13 +121,17 @@
 
     </div><!-- /.single-product-gallery -->
     <div class="buynowdiv">
-    <form action="underConstruct.html">
+    <form action="buynow.jsp">
     	<button id="buynow" class="buynow">
     		Buy Now
     	</button>
     	<button class="addtocart" id="addtocart">
     		Add to cart
     	</button>
+    	<input type="text" name="listingid" value='<%=request.getParameter("id") %>' hidden="hidden">
+    	<input type="number" id="quant" name="quant" hidden="hidden">
+    	<input type="text" name="listingname" id="listingname" hidden="hidden">
+    	<input type="number" id="listingamount" name="listingamount" hidden="hidden">
     </form>
     </div>
 </div><!-- /.gallery-holder -->        			
@@ -156,6 +160,7 @@
 							<div class='col-sm-9'>
 								<div class='stock-box'>
 									<span style="color:red;font-size:15px" id='available'></span>
+									<span hidden="hidden" id='available_quant'></span>
 								</div>	
 							</div>
 						</div>	
@@ -222,6 +227,7 @@
 <script>
 $(document).ready(function(){
 	$("#quantity").val("1");
+	$("#quant").val("1");
 	<% AccessProperties ap = new AccessProperties(); %>
 	var imgServerURL = "<%=ap.getImageServerURL() %>"; 
     var ctxPath = "<%=request.getContextPath()%>";
@@ -242,9 +248,13 @@ $(document).ready(function(){
 					{
 						if(res==0){
 							$("#available").text("Out of Stock");
+							$("#buynow").hide();
+							$("#addtocart").hide();
+							
 						}
 						else{
-							$("#available").text("In Stock ("+res+")");
+							$("#available").text("In Stock "+"("+res+")");
+							$("#available_quant").text(res);
 						}
 					},
 					error : function(){
@@ -257,6 +267,8 @@ $(document).ready(function(){
 				$("#discountedprice").text(amount);
 				$("#price-strike").text(result.price);
 				$("#discount").text("Discount: "+result.discount+"%");
+				$("#listingamount").val(amount);
+				$("#listingname").val(result.listingName);
 				
 				var img_data = "<div id='owl-single-product'>"+
 				"    <div class='single-product-gallery-item' id='slide1'>"+
@@ -290,8 +302,14 @@ $(document).ready(function(){
 
 $("#quant-up").click(function(){
 	var value = $("#quantity").val();
-	value++;
-	$("#quantity").val(value);
+	var available_quant = $("#available_quant").text();
+	if(value<available_quant)
+	{
+		value++;
+		$("#quantity").val(value);
+		$("#quant").val(value);
+		
+	}
 });
 
 $("#quant-down").click(function(){
@@ -299,6 +317,7 @@ $("#quant-down").click(function(){
 	if(value>1){
 		value--;
 		$("#quantity").val(value);
+		$("#quant").val(value);
 	}
 });
 </script>

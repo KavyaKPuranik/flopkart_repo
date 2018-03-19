@@ -234,8 +234,8 @@ public class SellerUploadServlet extends HttpServlet
 			
 			target3.request(MediaType.APPLICATION_JSON).post(Entity.entity(listDet, MediaType.APPLICATION_JSON));
 		}
-		response.sendRedirect("sellerItemInsert.jsp?id="+id);
-		
+		//response.sendRedirect("sellerItemInsert.jsp?id="+id);
+		response.sendRedirect("sellerHub.jsp?");
 	}
 	
 }

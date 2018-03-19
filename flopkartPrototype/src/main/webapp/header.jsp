@@ -138,7 +138,7 @@
 			
 			<div class="row"
 							style="padding-left: 0px; padding-top: 15px; padding-bottom: 15px;">
-							<button type="button" id="login_btn"
+							<button type="button" id="signup_btn"
 								class="btn btn-primary btn-lg btn-block"
 								style="border-radius: 0px; background-color: #F26419; border-width: 0mm"
 								value="Login" onclick="signup('<%=request.getContextPath()%>');">SIGN UP</button>
@@ -257,7 +257,7 @@
 						<li id="unregistered"><div>
 						<!-- ============================================================= LOGIN and SIGNUP ============================================================= -->
 							<form id="myProfile" method="post" action="./myProfile.jsp">
-								<label id="Login_btn"> <a href="#"  style="font-size: 16px; letter-spacing: 0.1px; font-weight: 600;
+								<label id="Login_signup_btn"> <a href="#"  style="font-size: 16px; letter-spacing: 0.1px; font-weight: 600;
 						 		color: white;" data-toggle="modal" data-target="#loginModal"> Login &amp; Signup</a>
 								</label>
 							</form></div>
