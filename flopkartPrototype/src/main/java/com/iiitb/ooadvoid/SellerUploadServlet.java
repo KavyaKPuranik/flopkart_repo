@@ -19,6 +19,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.SyncInvoker;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
@@ -198,8 +199,8 @@ public class SellerUploadServlet extends HttpServlet
 		item.setDescription(desptn);
 		
 		
-		
-	//	target.request(MediaType.APPLICATION_JSON).post(Entity.entity(item, MediaType.APPLICATION_JSON));
+		WebTarget target1 = client.target(BASE_URI+PATH_NAME);
+		target1.request(MediaType.APPLICATION_JSON).post(Entity.entity(item, MediaType.APPLICATION_JSON));
 		
 //		Invocation.Builder invocationBuilder = target.request(MediaType.APPLICATION_JSON);
 //		Response response1 = invocationBuilder.post(Entity.entity(item, MediaType.APPLICATION_JSON));
@@ -222,6 +223,10 @@ public class SellerUploadServlet extends HttpServlet
 		}
 		//response.sendRedirect("sellerItemInsert.jsp?id="+id);
 		response.sendRedirect("sellerhome.jsp?id="+itemid);
+	}
+	private SyncInvoker request1(String applicationJson) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
