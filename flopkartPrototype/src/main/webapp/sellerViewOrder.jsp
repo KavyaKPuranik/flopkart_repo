@@ -136,7 +136,7 @@
 									<li class="active dropdown yamm-fw">
 										<a	href="sellerViewItem.jsp" style="color:black">VIEW YOUR ITEMS</a></li>
 									<li class="active dropdown yamm-fw">
-										<a	href="#" style="color:black">VIEW ORDERS</a><div class="yamm-content"></li>
+										<a	href="sellerViewOrder.jsp" style="color:black">VIEW ACTIVE ORDERS</a><div class="yamm-content"></li>
 									
 								</ul>
 								<!-- /.navbar-nav -->
@@ -221,6 +221,8 @@
       </div>
       <!-- /.sidebar -->
       <input type="text" id="sellerid" name="sellerid" hidden="hidden"/>
+      <input type="text" id="count" name="count" hidden="hidden"/>
+      
       <div class="col-md-9"> 
         <!-- ========================================== SECTION – HERO ========================================= -->
 	      
@@ -258,9 +260,10 @@ $(document).ready(function(){
 	
 	
  	 	checkCookie();
- 	 	 var ctxPath = "<%=request.getContextPath()%>";
- 		//headerFunctions(ctxPath);		
+ 	 	var ctxPath = "<%=request.getContextPath()%>";	
+ 	 	$('#count').val(0);
  		loadListings();
+ 		
 		 
 	});
 function checkCookie() 
@@ -281,55 +284,62 @@ function checkCookie()
     		logout();
     }
 }
-
 	function loadListings(){
 		$('#listing').empty();
 	    	var ctxPath = "<%=request.getContextPath()%>";
 	<%--     	var subcategoryid = "<%=request.getParameter("id")%>"; --%>
 	   var sellerid = $("#sellerid").val();
-	   alert(sellerid);
+	  //	alert(sellerid);
 	    	
 		        $.ajax(
 		        		{
 		        			type : 'GET',
 		        			contentType : 'application/json',
 		        			url : ctxPath + "/webapi/listings/seller/"+sellerid,
-		        			async : false,
 		        			dataType : "json", // data type of response
-		        			success : function(result){
-		        				for (var i in result){
-		        				
+		        			success : function(result1){
+		        				for (var i in result1){
+		        					//alert("ItemId: "+result1[i].itemId); success
 							$.ajax(
-		        						{
+									{	
 		        							type : 'GET',
 		        							contentType : 'application/json',
-		        							url : ctxPath + "/webapi/orders/item/"+result[i].itemId,
+		        							url : ctxPath + "/webapi/orders/item/"+result1[i].itemId,
 		        							dataType : "json", // data type of response
-		        							success : displayListings,
+		        							success : function(result){
+		        								if(result != ""){
+		        									displayListings(result);
+		        									
+		        								}
+		        							},
 		        					    		error:function(err) {
-		        					    		alert(err);
-		        					    	}
+			        					    		alert(err);
+			        					    	}
 		        						});
 		        				}
 		        	            
 		        	    	},
 		        	    	error:function(){
 		        	    		alert("error occurred");
-		        	        	
 		        	    	}
 		        		});
 		}
 		function displayListings(result)
-		{
+		{	
+			
 		    <% AccessProperties ap = new AccessProperties(); %>
 			var data="";
-			data+="<div class = 'row' style = 'font-size:15px; text-align:left; padding-left:20px;' >"+
-	        "<div class='col-sm-12'style ='font-size:15px; text-align:left; padding-top: 70px ; padding-left:60px;' >"+
-	        "<div style = 'font-size:15px;'>Item ID :  "+result.itemId+"</div>"+
-	        "<div style = 'font-size:15px;'>Item Shipping Address :  "+result.shippingAddress+"</div>"+
-	        "<div style = 'font-size:15px;'>Item Status :  "+result.status+"</div>"+
-	        "<div style = 'font-size:15px;'>Total Amount :  "+result.totalAmount+"</div>"+
-	      /*   "<div style = 'font-size:15px;'>Quantity :  "+result.quantity+"</div>"+ */
+			var i = $("#count").val();
+			i++;
+			$('#count').val(i);
+			data+="<div class = 'row' style = 'margin:5px 50px;border-style: groove;border-width: 7px;font-size:15px; text-align:left; padding-left:70px;' >"+
+			"<div class='col-sm-12' style ='font-size:15px; text-align:left; padding:20px;' >"+
+			"<h2 style='padding-bottom:20px;'>Ordered Item No: "+i+"</h2>"+
+	        "<div style = 'padding-bottom:10px;font-size:15px;'>Item ID :  <b>"+result[0].itemId+"</b></div>"+
+	        "<div style = 'padding-bottom:10px;font-size:15px;'>Shipping Address : <b> "+result[0].shippingAddress+"</b></div>"+
+	        "<div style = 'padding-bottom:10px;font-size:15px;'>Total Amount : <b> "+result[0].totalAmount+"</b></div>"+
+	        "<div style = 'padding-bottom:10px;font-size:15px;'>Quantity : <b> "+result[0].quantity+"</b></div>"+
+	        "<div style = 'padding-bottom:10px;font-size:18px;color:green;'>Item Status :  <b>"+result[0].status+"</b></div>"+
 	       	"</div></div>";
 	       	$('#listing').append(data);
 		}

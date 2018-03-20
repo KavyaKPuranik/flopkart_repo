@@ -136,7 +136,7 @@
 									<li class="active dropdown yamm-fw">
 										<a	href="sellerViewItem.jsp" style="color:black">VIEW YOUR ITEMS</a></li>
 									<li class="active dropdown yamm-fw">
-										<a	href="#" style="color:black">VIEW ORDERS</a><div class="yamm-content"></li>
+										<a	href="sellerViewOrder.jsp" style="color:black">VIEW ACTIVE ORDERS</a><div class="yamm-content"></li>
 									
 								</ul>
 								<!-- /.navbar-nav -->
