@@ -1,48 +1,103 @@
 package com.iiitb.ooadvoid.pojo;
 
-import java.util.Date;
-
-public class FlopkartOrder {
+public class FlopkartOrder
+{
 	private Integer id;
 	private String shippingAddress;
-	private Integer UserId;
-	private String status;   
+	private Integer userId;
+	private String itemId;
+	private Integer orderId;
+	private String status;
 	private String orderDate;
 	private Integer totalAmount;
-	public Integer getId() {
+	private Integer quantity;
+	
+	public Integer getId()
+	{
 		return id;
 	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public String getorderDate() {
-		return orderDate;
-	}
-	public void setorderDate(String orderDate) {
-		this.orderDate = orderDate;
-	}
-	public Integer gettotalAmount() {
-		return totalAmount;
-	}
-	public void settotalAmount(Integer totalAmount) {
-		this.totalAmount = totalAmount;
-	}
-	public Integer getUserId() {
-		return UserId;
-	}
-	public void setUserId(Integer UserId) {
-		this.UserId = UserId;
-	}
-	public String getstatus() {
-		return status;
-	}
-	public void setstatus(String status) {
-		this.status = status;
-	}
-	public String getshippingAddress() {
+
+	public String getShippingAddress()
+	{
 		return shippingAddress;
 	}
-	public void setshippingAddress(String shippingAddress) {
+
+	public void setShippingAddress(String shippingAddress)
+	{
 		this.shippingAddress = shippingAddress;
 	}
+
+	public String getItemId()
+	{
+		return itemId;
+	}
+
+	public void setItemId(String itemId)
+	{
+		this.itemId = itemId;
+	}
+
+	public Integer getOrderId()
+	{
+		return orderId;
+	}
+
+	public void setOrderId(Integer orderId)
+	{
+		this.orderId = orderId;
+	}
+	
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+
+	public String getStatus()
+	{
+		return status;
+	}
+
+	public void setStatus(String status)
+	{
+		this.status = status;
+	}
+
+	public String getOrderDate()
+	{
+		return orderDate;
+	}
+
+	public void setOrderDate(String orderDate)
+	{
+		this.orderDate = orderDate;
+	}
+
+	public Integer getTotalAmount()
+	{
+		return totalAmount;
+	}
+
+	public void setTotalAmount(Integer totalAmount)
+	{
+		this.totalAmount = totalAmount;
+	}
+
+	public void setId(Integer id)
+	{
+		this.id = id;
+	}
+
+	public Integer getUserId()
+	{
+		return userId;
+	}
+
+	public void setUserId(Integer userId)
+	{
+		this.userId = userId;
+	}
+
 }

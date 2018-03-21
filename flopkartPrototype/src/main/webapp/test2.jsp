@@ -16,46 +16,46 @@
 				<div class="col-md-8">
 					<div class="panel-group checkout-steps" id="accordion">
 						<!-- checkout-step-01  -->
-<div id="login_panel" class="panel panel-default checkout-step-01">
+						<div id="login_panel" class="panel panel-default checkout-step-01">
 
-	<!-- panel-heading -->
-		<div class="panel-heading">
-    	<h4 class="unicase-checkout-title">
-	        <a data-toggle="collapse" class="" data-parent="#accordion" href="#collapseOne">
-	          <span>1</span>Login
-	        </a>
-	     </h4>
-    </div>
-    <!-- panel-heading -->
-
-	<div id="collapseOne" class="panel-collapse collapse in">
-
-		<!-- panel-body  -->
-	    <div class="panel-body">
-			<div class="row">		
-
-				<!-- guest-login -->			
-				<div class="col-md-6 col-sm-6 guest-login">
-				
-					<h4 class="checkout-subtitle">Register or Login</h4>
-					<h4 class="checkout-subtitle outer-top-vs">Register and save time</h4>
-					<p class="text title-tag-line ">Register with us for future convenience:</p>
+						<!-- panel-heading -->
+							<div class="panel-heading">
+					    	<h4 class="unicase-checkout-title">
+						        <a data-toggle="collapse" class="" data-parent="#accordion" href="#collapseOne">
+						          <span>1</span>Login
+						        </a>
+						     </h4>
+					    </div>
+	    <!-- panel-heading -->
+	
+		<div id="collapseOne" class="panel-collapse collapse in">
+	
+			<!-- panel-body  -->
+		    <div class="panel-body">
+				<div class="row">		
+	
+					<!-- guest-login -->			
+					<div class="col-md-6 col-sm-6 guest-login">
 					
-					<ul class="text instruction inner-bottom-30">
-						<li class="save-time-reg">- Fast and easy check out</li>
-						<li>- Easy access to your order history and status</li>
-					</ul>
-
-					<button type="submit" class="btn-upper btn btn-primary checkout-page-button checkout-continue " onclick="buynowsignup();">Continue</button>
-				</div>
-				<!-- guest-login -->
-
-				<!-- already-registered-login -->
-				<div class="col-md-6 col-sm-6 already-registered-login">
-					<h4 class="checkout-subtitle">Already registered?</h4>
-					<p class="text title-tag-line">Please log in below:</p>
-					  <button type="submit" class="btn-upper btn btn-primary checkout-page-button" onclick="buynowvalidation();">Login</button>
-				</div>	
+						<h4 class="checkout-subtitle">Register or Login</h4>
+						<h4 class="checkout-subtitle outer-top-vs">Register and save time</h4>
+						<p class="text title-tag-line ">Register with us for future convenience:</p>
+						
+						<ul class="text instruction inner-bottom-30">
+							<li class="save-time-reg">- Fast and easy check out</li>
+							<li>- Easy access to your order history and status</li>
+						</ul>
+	
+						<button type="submit" class="btn-upper btn btn-primary checkout-page-button checkout-continue " onclick="buynowsignup();">Continue</button>
+					</div>
+					<!-- guest-login -->
+	
+					<!-- already-registered-login -->
+					<div class="col-md-6 col-sm-6 already-registered-login">
+						<h4 class="checkout-subtitle">Already registered?</h4>
+						<p class="text title-tag-line">Please log in below:</p>
+						  <button type="submit" class="btn-upper btn btn-primary checkout-page-button" onclick="buynowvalidation();">Login</button>
+					</div>	
 				<!-- already-registered-login -->		
 
 			</div>			
@@ -103,27 +103,43 @@
 							    	<tr>
 							    		<th>Item Name</th>
 							    		<th>Quantity</th>
-							    		<th>Price</th>
-							    	</tr>
+							    		<th>Marked Price</th>
+							    		<th>Discount</th>
+							    		<th>Discounted Price</th>
+								    
+									</tr>
 							    	</thead>
 							    	<tbody>
 							    	<tr>
 							    	<% int quant = Integer.parseInt(request.getParameter("quant"));%>
 							    	<% int listingamount = Integer.parseInt(request.getParameter("listingamount"));%>
-							    		
+
+							    	<% int discount=Integer.parseInt(request.getParameter("discounted"));%>
+							    	<% int price=Integer.parseInt(request.getParameter("priced"));%>
 							    		<td><%=request.getParameter("listingname") %></td>
 							    		<td><%=quant%></td>
+							    		<td><%=price%></td>
+							    		<td><%=discount%> %</td>
 							    		<td><%=listingamount%></td>
 							    	</tr>
 							    	<tr>
-							    		<th colspan="2">Total Price:</th>
+							    		<th colspan="4">Total Price:</th>
 							    		<% int total = quant * listingamount;%>
+
+
+
 							    		<th><%=total %></th>
 							    	</tr>
 							    	</tbody>
 							    </table></div>
-                              <br/>
+
+
+							   <div class="seller-info" id="seller-info" style='color:green; font-size:15px'>
+							   <% String sname=request.getParameter("sellername");%>
+							   Seller Name: <%=sname %>
+							   </div>                              <br/>
                               <button type="submit" class="btn btn-primary" onclick="paymentOption()">Next</button>
+
 							    </div>
 					    	</div>
 						</div>
@@ -281,13 +297,15 @@ function order_formToJSON()
 	    "status" : Status,
 	    "totalAmount" : TotalAmount  
 	});
-	alert(flopkartOrder);
+	//alert(flopkartOrder);
 	return flopkartOrder;
 }
 
 function render(){
 	var listingid = '<%=request.getParameter("listingid")%>';
 	var quant = '<%=quant%>';
+	var price='<%=price%>';
+	var discount='<%=discount%>'; 
     var ctxPath = "<%=request.getContextPath()%>";
 	$.ajax(
 			{
@@ -319,7 +337,7 @@ function render(){
 // 		        	alert("lis"+JSON.stringify(err));
 		    	}
 			});
-	window.location.href="index.jsp";
+	window.location.href="myorder.jsp";
 }
 
 function update_item_formtoJSON() 

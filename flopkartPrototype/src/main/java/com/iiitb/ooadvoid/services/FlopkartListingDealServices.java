@@ -27,6 +27,16 @@ public class FlopkartListingDealServices
 		List<FlopkartListingDeal> listingdeal = dao.getFlopkartListingDeals();
 		return listingdeal;
 	}
+	
+	@GET
+	@Path("/today")
+	@Produces("application/json")
+	public List<FlopkartListingDeal> getTodayFlopkartListingDeals()
+	{
+		FlopkartListingDealDAO dao = new FlopkartListingDealDAO();
+		List<FlopkartListingDeal> listingdeal = dao.getTodayFlopkartListingDeals();
+		return listingdeal;
+	}
 
 	@GET
 	@Path("/{id}")
@@ -38,6 +48,15 @@ public class FlopkartListingDealServices
 		return listingdeal;
 	}
 
+	@GET
+	@Path("/listing/{id}")
+	@Produces("application/json")
+	public List<FlopkartListingDeal> getFlopkartListingDealsByListingId(@PathParam("id") int listingid)
+	{
+		FlopkartListingDealDAO dao = new FlopkartListingDealDAO();
+		List<FlopkartListingDeal> deals = dao.getFlopkartListingDealsByListingId(listingid);
+		return deals;
+	}
 	
 	@POST
 	@Path("/create")

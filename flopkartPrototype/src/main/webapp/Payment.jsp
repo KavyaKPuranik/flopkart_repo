@@ -3,7 +3,7 @@
 <html>
 <head>
 	<%@include file="metaContent.jsp" %>
-	<title>Welcome to Flopkart</title>
+	<title>Payment</title>
 </head>
 <body>
      
@@ -30,6 +30,7 @@
 <script>
 $(document).ready(function(){
     var ctxPath = "<%=request.getContextPath()%>";
+    <%session.setAttribute("totalamount",1000);%>
 	headerFunctions(ctxPath);
 })
 	

@@ -1,6 +1,10 @@
 
 package com.iiitb.ooadvoid.dao;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.iiitb.ooadvoid.pojo.FlopkartListingDeal;
@@ -15,6 +19,19 @@ public class FlopkartListingDealDAO extends HibernateDAO<FlopkartListingDeal>
 		return item;
 	}
 	
+	public List<FlopkartListingDeal> getTodayFlopkartListingDeals()
+	{
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		String todayDate = dateFormat.format(date);
+		return super.findAll("FlopkartListingDeal", "startDate", todayDate);
+	}
+	
+	public List<FlopkartListingDeal> getFlopkartListingDealsByListingId(int listingId)
+	{
+		List<FlopkartListingDeal> listingdeals =  super.findAll("FlopkartListingDeal", "listingid", listingId);
+		return listingdeals;
+	}
 	
 	public List<FlopkartListingDeal> getFlopkartListingDeals()
 	{

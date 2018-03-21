@@ -12,10 +12,10 @@
          <generator class="native"/>
       </id>
       
-      <property name = "userid" column = "userid" type = "int"/>
+      <property name = "userid" column = "userid" type = "int"   unique="true"/>
       <property name = "accountno" column = "accountno" type = "int"/>
       <property name = "balance" column = "balance" type = "int"/>
-      <property name = "pin" column = "pin" type = "int"/>
+      <property name = "pin" column = "pin" type = "string"/>
       
      
 	</class>

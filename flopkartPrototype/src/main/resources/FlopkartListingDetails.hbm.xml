@@ -11,7 +11,7 @@
       <id name = "ID" type = "int" column = "ID">
          <generator class="native"/>
       </id>
-      <property name = "ListingId" column = "ListingId" type = "int" />
+      <property name = "ItemId" column = "ItemId" type = "string" />
       <property name = "attr_name" column = "attr_name" type = "string" />
       <property name = "attr_val" column = "attr_val" type = "string"/>
      

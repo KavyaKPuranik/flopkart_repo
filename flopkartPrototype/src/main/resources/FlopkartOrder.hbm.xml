@@ -9,9 +9,12 @@
       </id>
 
       <property name = "UserId" column = "UserId" type = "int"/>
+       <property name = "orderId" column = "OrderId" type = "int"/>
       <property name = "shippingAddress" column = "shippingAddress" type = "string"/>
+      <property name = "itemId" column = "itemId" type = "string"/>
       <property name = "status" column = "status" type = "string"/>
 	  <property name = "orderDate" column = "orderDate" type = "string"/>
 	  <property name = "totalAmount" column = "totalAmount" type = "int"/>
+	  <property name = "quantity" column = "quantity" type = "int"/>
 	</class>
 </hibernate-mapping>

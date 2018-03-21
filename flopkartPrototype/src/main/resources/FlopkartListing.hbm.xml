@@ -12,7 +12,8 @@
          <generator class="native"/>
       </id>
       
-      <property name = "listingName" column = "ListingName" type = "string"  unique="true"/>
+      <property name = "listingName" column = "ListingName" type = "string"/>
+      <property name = "itemId" column = "itemId" type = "string"  unique="true"/>
       <property name = "imgUrl" column = "ImgUrl" type = "string"/>
       <property name = "subcategoryId" column = "subcategoryid" type = "int"/>
       <property name = "sellerid" column = "sellerid" type = "int"/>

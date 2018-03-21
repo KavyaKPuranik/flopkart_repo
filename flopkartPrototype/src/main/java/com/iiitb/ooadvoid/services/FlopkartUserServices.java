@@ -99,7 +99,8 @@ public class FlopkartUserServices
 		dao.addFlopkartUser(user);
 
 		return Response.ok().build();
-	}	@PUT
+	}	
+	@PUT
 	@Path("/update/{id}")
 	@Consumes("application/json")
 	public Response updateFlopkartUser(@PathParam("id") int id, FlopkartUser user)

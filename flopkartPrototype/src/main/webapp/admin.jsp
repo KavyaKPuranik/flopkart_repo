@@ -36,7 +36,7 @@
 			<h3 style="color:white">Enter new subcategory</h3><br/>
 			<form>
 				<div id="content"></div>
-				<div style="background-color:blue; border-radius: 25px; font-size:20px; color:white" onclick="DispSubCat()">Subcategories
+				<div style="font-size:20px; color:white" onclick="DispSubCat()">Subcategories
 				<div id="SubCat"></div></div>
 				<br /> <input class="form-control" type="text" id="subcatName"
 					placeholder="Enter subcategory name"> 
@@ -183,7 +183,6 @@ function DispSubCat()
             for(var i in result){
             	data+="<li style='background-color:black; text-align:left'>"+result[i].subcategoryName+"</li>";
             }
-            data+="<div>Subcategories</div>"
             $('#SubCat').html(data);
     	},
     	error:function(data,status) {

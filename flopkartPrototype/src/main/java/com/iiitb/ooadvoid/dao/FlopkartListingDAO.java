@@ -40,7 +40,7 @@ public class FlopkartListingDAO extends HibernateDAO<FlopkartListing>
 	 
 	 public List<FlopkartListing> getFlopkartListingBysellerId(Integer id)
 	{
-		return super.findAll(entity_name,"sellerId", id);
+		return super.findAll(entity_name,"sellerid", id);
 	}
 	 
 	public int deleteFlopkartListing(int id)

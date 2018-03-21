@@ -159,10 +159,10 @@
 			      <div class="col-md-5 sidebar"> 
 		              <input type="text" class="form-control input-lg"  name="lastName"  id="lastName" required disabled 
 		              autocomplete="name" value="Flipkart">
-		              <span class="warning" id="warning_fname"
+		              <span class="warning" id="warning_lname"
 								style="align: left; padding-left: 0px; color: red; font-size: 80%"
 								class="pull-left"> <b>Please enter
-									First Name</b>
+									Last Name</b>
 							</span>
 		          </div>
 		        </div>
@@ -304,15 +304,15 @@
 								<b>Your new password must</b>
 							</h5>
 						<div class="row" style=" padding-left:15px;">
-							<h5 class="modal-title"row" align="left"
+							<h5 class="modal-title" align="left"
 								style="font-family: sans-serif; padding-top: 10px; color: white; ">
-								* Be at least 4 characters in length</h4>
+								* Be at least 4 characters in length</h5>
 							<h5 class="modal-title" align="left"
 								style="font-family: sans-serif;  padding-top: 10px;color: white; ">
-								* Not be same as your current password</h4>
+								* Not be same as your current password</h5>
 							<h5 class="modal-title" align="left"
 								style="font-family: sans-serif;  padding-top: 10px;color: white; ">
-								* Not contain common passwords</h4>
+								* Not contain common passwords</h5>
 						</div>
 						</div>
 						<div class="row"

@@ -15,7 +15,7 @@ import com.iiitb.ooadvoid.dao.FlopkartListingDetailsDAO;
 		@Consumes("application/json")
 		public Response addFlopkartListingDetails(FlopkartListingDetails item)
 		{		
-				item.setListingId(item.getListingId());
+				item.setItemId(item.getItemId());
 				item.setAttr_name(item.getAttr_name());
 				item.setAttr_val(item.getAttr_val());
 				

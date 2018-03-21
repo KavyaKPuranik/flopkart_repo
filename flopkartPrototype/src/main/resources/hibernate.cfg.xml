@@ -15,7 +15,6 @@
   <!--mapping class="com.topjavatutorial.dao.Flipkart_User"/ -->
   <!-- mapping resource="Flipkart_User.hbm.xml"/-->
   <mapping resource="FlopkartUser.hbm.xml"/>
-  <mapping resource="FlopkartItem.hbm.xml"/>
   <mapping resource="FlopkartCategory.hbm.xml"/>
   <mapping resource="FlopkartSubcategory.hbm.xml"/>
   <mapping resource="FlopkartListing.hbm.xml"/>

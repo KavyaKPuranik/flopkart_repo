@@ -449,7 +449,7 @@ $(document).ready(function(){
 var x = setInterval(function() {
 	
 	//Set the date we're counting down to
-	var countDownDate = new Date("Mar 13, 2018 15:37:25").getTime();
+	var countDownDate = new Date("Mar 23, 2018 15:37:25").getTime();
 	
     // Get todays date and time
     var now = new Date().getTime();

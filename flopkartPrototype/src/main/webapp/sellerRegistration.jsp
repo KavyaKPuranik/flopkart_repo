@@ -263,7 +263,7 @@ function signup(ctxPath) {
 		data : signupformToJSON(),
 		success : renderDetails(fname,ctxPath),
 		error : function(){
-			alert("NOOOO");
+			//alert("NOOOO");
 		}
 	});
 }

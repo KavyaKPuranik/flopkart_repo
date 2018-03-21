@@ -20,7 +20,7 @@
 		var account=<%=request.getParameter("accountno")%>
 		var pin=<%=request.getParameter("password")%>
 		 var ctxPath = "<%=request.getContextPath()%>";
-		  var totalamount=<%session.getAttribute("totalamount");%>
+		  var totalamount=5000
 		  console.log(totalamount);
 		
 		$.ajax({
