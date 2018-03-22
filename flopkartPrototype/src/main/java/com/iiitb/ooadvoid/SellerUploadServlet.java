@@ -37,7 +37,6 @@ public class SellerUploadServlet extends HttpServlet
 	
 	public static final String BASE_URI = "http://localhost:8080/flopkartPrototype/webapi/";
 	public static final String PATH_NAME = "listings/create";
-	public static final String PATH_NAME2 = "items/create";
 	public static final String PATH_NAME3 = "details/create";
 	String listingName = "";
 	Integer sub_cat_content = 0;

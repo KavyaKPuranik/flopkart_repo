@@ -217,7 +217,7 @@ $(document).ready(function()
     			continue;
     		var data="";
     		data+="<div class='col-sm-4, box'><a href='item.jsp?id="+result[i].id+
-    		"'> <div style='width: 260px;height: 250px;'>"+
+    		"'> <div style='width: 250px;height: 250px;'>"+
     		"<img class='listingImage' style='max-height:100%; max-width:100%;' src='"+
     		imgServerURL+result[i].imgUrl+"' alt=''></div>"+
             "<div style = 'font-size:15px; text-align:center'>"+result[i].listingName+"</div>"+
@@ -231,7 +231,6 @@ $(document).ready(function()
 	       	$('#listing').append(data);
     		};
     };
-
     function starJson(listing)
     {
     	var review = JSON.stringify({

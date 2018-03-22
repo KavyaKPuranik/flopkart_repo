@@ -130,8 +130,14 @@ function checkCookie()
 
 function fetch() 
 {
+	 var result = getCookie("seller_details");
+	 var sellerId;
+	 if (result != "") 
+	 {	
+	    var seller = JSON.parse(result);
+	    sellerId = seller.id;
+	 }
     var ctxPath = "<%=request.getContextPath()%>";
-    var sellerId = 5;
 	$.ajax(
 	{
 		type : 'GET',
@@ -182,7 +188,7 @@ $("#submitListingDeal").click(function(evt) {
 					data : toJSON(),
 					dataType : "json", // data type of response
 					success : function(){
-						alert("success");
+						//alert("success");
 			    	},
 			    	error:function(err) {
 			        	//alert(JSON.stringify(err));
@@ -211,13 +217,12 @@ function toJSON()
 }
 
 function validate(){
-	var start = new Date($("#startDate").val());
-	var end = new Date($("#endDate").val());
-	alert(start)
+	var start = $("#startDate").val();
+	var end = $("#endDate").val();
 	var dealid = $("#dealId").val();
 	var listingid = $("#listingId").val();
 	var today = new Date();
-	//alert(dealid+" "+listingid)
+	alert(today+" "+start)
 	var bool1 = (end - start < 0);
 	var bool2 = (start - today < 0);
 	if(bool1==true){ //end < start

@@ -1,11 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="com.iiitb.ooadvoid.AccessProperties" %>
 <!DOCTYPE html>
 <html>
 <head>
 	<%@include file="metaContent.jsp" %>
 	<title>Flopkart Offer Zone</title>
 </head>
-
+<style>
+.box {
+  transition: box-shadow .3s;
+  width: 300px;
+  height: 300px;
+  background: #fff;
+  float: left;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.box:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+</style>
 <body>
     <%@include file="header.jsp" %>
 
@@ -16,330 +30,18 @@
         <!-- ================================== TOP NAVIGATION ================================== -->
         <div class="side-menu animate-dropdown outer-bottom-xs">
           <div class="headOfferZone"></div>
+          <div style="border-bottom: solid 1px rgba(0, 0, 0, .05); padding: 8px 10px 10px 30px;">
           <div style="display: inline-block; font-size: 20px; font-weight: bold; font-family: Arial, sans-serif; color: #000; 
-            border-bottom: solid 1px rgba(0, 0, 0, .05); padding: 8px 10px 10px; line-height: 32px;">
+            line-height: 32px; ">
              <i style="color:#157ed2; width: 15px; height: 15px; vertical-align: middle;
     			margin-right: 9px;" class="fas fa-tags"></i>
     			 Offer Zone
-    	  </div>
+    	  </div></div>
           <nav class="yamm megamenu-horizontal">
-            <ul class="nav">
-              <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-shopping-bag" aria-hidden="true"></i>Clothing</a>
-                <ul class="dropdown-menu mega-menu">
-                  <li class="yamm-content">
-                    <div class="row">
-                      <div class="col-sm-12 col-md-3">
-                        <ul class="links list-unstyled">
-                          <li><a href="#">Dresses</a></li>
-                          <li><a href="#">Shoes </a></li>
-                          <li><a href="#">Jackets</a></li>
-                          <li><a href="#">Sunglasses</a></li>
-                          <li><a href="#">Sport Wear</a></li>
-                          <li><a href="#">Blazers</a></li>
-                          <li><a href="#">Shirts</a></li>
-                          <li><a href="#">Shorts</a></li>
-                        </ul>
-                      </div>
-                      <!-- /.col -->
-                      <div class="col-sm-12 col-md-3">
-                        <ul class="links list-unstyled">
-                          <li><a href="#">Handbags</a></li>
-                          <li><a href="#">Jwellery</a></li>
-                          <li><a href="#">Swimwear </a></li>
-                          <li><a href="#">Tops</a></li>
-                          <li><a href="#">Flats</a></li>
-                          <li><a href="#">Shoes</a></li>
-                          <li><a href="#">Winter Wear</a></li>
-                          <li><a href="#">Night Suits</a></li>
-                        </ul>
-                      </div>
-                      <!-- /.col -->
-                      <div class="col-sm-12 col-md-3">
-                        <ul class="links list-unstyled">
-                          <li><a href="#">Toys &amp; Games</a></li>
-                          <li><a href="#">Jeans</a></li>
-                          <li><a href="#">Shirts</a></li>
-                          <li><a href="#">Shoes</a></li>
-                          <li><a href="#">School Bags</a></li>
-                          <li><a href="#">Lunch Box</a></li>
-                          <li><a href="#">Footwear</a></li>
-                          <li><a href="#">Wipes</a></li>
-                        </ul>
-                      </div>
-                      <!-- /.col -->
-                      <div class="col-sm-12 col-md-3">
-                        <ul class="links list-unstyled">
-                          <li><a href="#">Sandals </a></li>
-                          <li><a href="#">Shorts</a></li>
-                          <li><a href="#">Dresses</a></li>
-                          <li><a href="#">Jwellery</a></li>
-                          <li><a href="#">Bags</a></li>
-                          <li><a href="#">Night Dress</a></li>
-                          <li><a href="#">Swim Wear</a></li>
-                          <li><a href="#">Toys</a></li>
-                        </ul>
-                      </div>
-                      <!-- /.col --> 
-                    </div>
-                    <!-- /.row --> 
-                  </li>
-                  <!-- /.yamm-content -->
-                </ul>
-                <!-- /.dropdown-menu --> </li>
-              <!-- /.menu-item -->
-              
-              <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-laptop" aria-hidden="true"></i>Electronics</a> 
-                <!-- ================================== MEGAMENU VERTICAL ================================== -->
-                <ul class="dropdown-menu mega-menu">
-                  <li class="yamm-content">
-                    <div class="row">
-                      <div class="col-xs-12 col-sm-12 col-lg-4">
-                        <ul>
-                          <li><a href="#">Gaming</a></li>
-                          <li><a href="#">Laptop Skins</a></li>
-                          <li><a href="#">Apple</a></li>
-                          <li><a href="#">Dell</a></li>
-                          <li><a href="#">Lenovo</a></li>
-                          <li><a href="#">Microsoft</a></li>
-                          <li><a href="#">Asus</a></li>
-                          <li><a href="#">Adapters</a></li>
-                          <li><a href="#">Batteries</a></li>
-                          <li><a href="#">Cooling Pads</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-xs-12 col-sm-12 col-lg-4">
-                        <ul>
-                          <li><a href="#">Routers &amp; Modems</a></li>
-                          <li><a href="#">CPUs, Processors</a></li>
-                          <li><a href="#">PC Gaming Store</a></li>
-                          <li><a href="#">Graphics Cards</a></li>
-                          <li><a href="#">Components</a></li>
-                          <li><a href="#">Webcam</a></li>
-                          <li><a href="#">Memory (RAM)</a></li>
-                          <li><a href="#">Motherboards</a></li>
-                          <li><a href="#">Keyboards</a></li>
-                          <li><a href="#">Headphones</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <!-- /.row --> 
-                  </li>
-                  <!-- /.yamm-content -->
-                </ul>
-                <!-- /.dropdown-menu --> 
-                <!-- ================================== MEGAMENU VERTICAL ================================== --> </li>
-              <!-- /.menu-item -->
-              
-              <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-paw" aria-hidden="true"></i>Shoes</a>
-                <ul class="dropdown-menu mega-menu">
-                  <li class="yamm-content">
-                    <div class="row">
-                      <div class="col-sm-12 col-md-3">
-                        <ul class="links list-unstyled">
-                          <li><a href="#">Dresses</a></li>
-                          <li><a href="#">Shoes </a></li>
-                          <li><a href="#">Jackets</a></li>
-                          <li><a href="#">Sunglasses</a></li>
-                          <li><a href="#">Sport Wear</a></li>
-                          <li><a href="#">Blazers</a></li>
-                          <li><a href="#">Shirts</a></li>
-                          <li><a href="#">Shorts</a></li>
-                        </ul>
-                      </div>
-                      <!-- /.col -->
-                      <div class="col-sm-12 col-md-3">
-                        <ul class="links list-unstyled">
-                          <li><a href="#">Handbags</a></li>
-                          <li><a href="#">Jwellery</a></li>
-                          <li><a href="#">Swimwear </a></li>
-                          <li><a href="#">Tops</a></li>
-                          <li><a href="#">Flats</a></li>
-                          <li><a href="#">Shoes</a></li>
-                          <li><a href="#">Winter Wear</a></li>
-                          <li><a href="#">Night Suits</a></li>
-                        </ul>
-                      </div>
-                      <!-- /.col -->
-                      <div class="col-sm-12 col-md-3">
-                        <ul class="links list-unstyled">
-                          <li><a href="#">Toys &amp; Games</a></li>
-                          <li><a href="#">Jeans</a></li>
-                          <li><a href="#">Shirts</a></li>
-                          <li><a href="#">Shoes</a></li>
-                          <li><a href="#">School Bags</a></li>
-                          <li><a href="#">Lunch Box</a></li>
-                          <li><a href="#">Footwear</a></li>
-                          <li><a href="#">Wipes</a></li>
-                        </ul>
-                      </div>
-                      <!-- /.col -->
-                      <div class="col-sm-12 col-md-3">
-                        <ul class="links list-unstyled">
-                          <li><a href="#">Sandals </a></li>
-                          <li><a href="#">Shorts</a></li>
-                          <li><a href="#">Dresses</a></li>
-                          <li><a href="#">Jwellery</a></li>
-                          <li><a href="#">Bags</a></li>
-                          <li><a href="#">Night Dress</a></li>
-                          <li><a href="#">Swim Wear</a></li>
-                          <li><a href="#">Toys</a></li>
-                        </ul>
-                      </div>
-                      <!-- /.col --> 
-                    </div>
-                    <!-- /.row --> 
-                  </li>
-                  <!-- /.yamm-content -->
-                </ul>
-                <!-- /.dropdown-menu --> </li>
-              <!-- /.menu-item -->
-              
-              <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-clock-o"></i>Watches</a>
-                <ul class="dropdown-menu mega-menu">
-                  <li class="yamm-content">
-                    <div class="row">
-                      <div class="col-xs-12 col-sm-12 col-lg-4">
-                        <ul>
-                          <li><a href="#">Gaming</a></li>
-                          <li><a href="#">Laptop Skins</a></li>
-                          <li><a href="#">Apple</a></li>
-                          <li><a href="#">Dell</a></li>
-                          <li><a href="#">Lenovo</a></li>
-                          <li><a href="#">Microsoft</a></li>
-                          <li><a href="#">Asus</a></li>
-                          <li><a href="#">Adapters</a></li>
-                          <li><a href="#">Batteries</a></li>
-                          <li><a href="#">Cooling Pads</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-xs-12 col-sm-12 col-lg-4">
-                        <ul>
-                          <li><a href="#">Routers &amp; Modems</a></li>
-                          <li><a href="#">CPUs, Processors</a></li>
-                          <li><a href="#">PC Gaming Store</a></li>
-                          <li><a href="#">Graphics Cards</a></li>
-                          <li><a href="#">Components</a></li>
-                          <li><a href="#">Webcam</a></li>
-                          <li><a href="#">Memory (RAM)</a></li>
-                          <li><a href="#">Motherboards</a></li>
-                          <li><a href="#">Keyboards</a></li>
-                          <li><a href="#">Headphones</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <!-- /.row --> 
-                  </li>
-                  <!-- /.yamm-content -->
-                </ul>
-                <!-- /.dropdown-menu --> </li>
-              <!-- /.menu-item -->
-              
-              <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-diamond"></i>Jewellery</a>
-                <ul class="dropdown-menu mega-menu">
-                  <li class="yamm-content">
-                    <div class="row">
-                      <div class="col-sm-12 col-md-3">
-                        <ul class="links list-unstyled">
-                          <li><a href="#">Dresses</a></li>
-                          <li><a href="#">Shoes </a></li>
-                          <li><a href="#">Jackets</a></li>
-                          <li><a href="#">Sunglasses</a></li>
-                          <li><a href="#">Sport Wear</a></li>
-                          <li><a href="#">Blazers</a></li>
-                          <li><a href="#">Shirts</a></li>
-                          <li><a href="#">Shorts</a></li>
-                        </ul>
-                      </div>
-                      <!-- /.col -->
-                      <div class="col-sm-12 col-md-3">
-                        <ul class="links list-unstyled">
-                          <li><a href="#">Handbags</a></li>
-                          <li><a href="#">Jwellery</a></li>
-                          <li><a href="#">Swimwear </a></li>
-                          <li><a href="#">Tops</a></li>
-                          <li><a href="#">Flats</a></li>
-                          <li><a href="#">Shoes</a></li>
-                          <li><a href="#">Winter Wear</a></li>
-                          <li><a href="#">Night Suits</a></li>
-                        </ul>
-                      </div>
-                      <!-- /.col -->
-                      <div class="col-sm-12 col-md-3">
-                        <ul class="links list-unstyled">
-                          <li><a href="#">Toys &amp; Games</a></li>
-                          <li><a href="#">Jeans</a></li>
-                          <li><a href="#">Shirts</a></li>
-                          <li><a href="#">Shoes</a></li>
-                          <li><a href="#">School Bags</a></li>
-                          <li><a href="#">Lunch Box</a></li>
-                          <li><a href="#">Footwear</a></li>
-                          <li><a href="#">Wipes</a></li>
-                        </ul>
-                      </div>
-                      <!-- /.col -->
-                      <div class="col-sm-12 col-md-3">
-                        <ul class="links list-unstyled">
-                          <li><a href="#">Sandals </a></li>
-                          <li><a href="#">Shorts</a></li>
-                          <li><a href="#">Dresses</a></li>
-                          <li><a href="#">Jwellery</a></li>
-                          <li><a href="#">Bags</a></li>
-                          <li><a href="#">Night Dress</a></li>
-                          <li><a href="#">Swim Wear</a></li>
-                          <li><a href="#">Toys</a></li>
-                        </ul>
-                      </div>
-                      <!-- /.col --> 
-                    </div>
-                    <!-- /.row --> 
-                  </li>
-                  <!-- /.yamm-content -->
-                </ul>
-                <!-- /.dropdown-menu --> </li>
-              <!-- /.menu-item -->
-              
-              <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-heartbeat"></i>Health and Beauty</a>
-                <ul class="dropdown-menu mega-menu">
-                  <li class="yamm-content">
-                    <div class="row">
-                      <div class="col-xs-12 col-sm-12 col-lg-4">
-                        <ul>
-                          <li><a href="#">Gaming</a></li>
-                          <li><a href="#">Laptop Skins</a></li>
-                          <li><a href="#">Apple</a></li>
-                          <li><a href="#">Dell</a></li>
-                          <li><a href="#">Lenovo</a></li>
-                          <li><a href="#">Microsoft</a></li>
-                          <li><a href="#">Asus</a></li>
-                          <li><a href="#">Adapters</a></li>
-                          <li><a href="#">Batteries</a></li>
-                          <li><a href="#">Cooling Pads</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-xs-12 col-sm-12 col-lg-4">
-                        <ul>
-                          <li><a href="#">Routers &amp; Modems</a></li>
-                          <li><a href="#">CPUs, Processors</a></li>
-                          <li><a href="#">PC Gaming Store</a></li>
-                          <li><a href="#">Graphics Cards</a></li>
-                          <li><a href="#">Components</a></li>
-                          <li><a href="#">Webcam</a></li>
-                          <li><a href="#">Memory (RAM)</a></li>
-                          <li><a href="#">Motherboards</a></li>
-                          <li><a href="#">Keyboards</a></li>
-                          <li><a href="#">Headphones</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <!-- /.row --> 
-                  </li>
-                  <!-- /.yamm-content -->
-                </ul>
-                <!-- /.dropdown-menu --> </li>
-              <!-- /.menu-item -->
+            <ul id="sidebarCat" class="nav">
+              <li><a style='color:black' href="#">Deals of the day</a></li><!-- /.menu-item -->
             </ul>
-            <!-- /.nav --> 
-          </nav>
+          </nav><!-- /.nav --> 
           <!-- /.megamenu-horizontal --> 
         </div>
         <!-- /.side-menu --> 
@@ -357,76 +59,9 @@
 					<p id="timer" style="position: relative; display: inline-block; margin-right: 8px; 
 					font-size: 16px; color: #7f7f7f;padding-top: 7px;"></p>
 				</div>
-				
-				<div class="category-product">
-	                  <div class="col-sm-6 col-md-3 wow fadeInUp">
-	                    <div class="products">
-	                      <div class="product">
-	                         <div class="product-image">
-	                           <div class="image"> <a href="item.jsp"><img style="opacity: 1;" src="./images/products/p5.jpg" alt=""></a> </div>
-	                         </div> <!-- /.product-image -->
-	                         <div class="product-info text-center">
-	                           <div style="font-size: 14px; font-weight: 500; margin-top: 15px; white-space: nowrap;
-	                             overflow: hidden; text-overflow: ellipsis;"><a href="item.jsp">Category Name 1</a></div>
-	                           <div style="color: #388e3c; padding-top: 8px; white-space: nowrap; overflow: hidden;
-	                             text-overflow: ellipsis;">Deal Name 1</div>
-	                         </div> <!-- product-info --> 
-	                      </div> <!-- /.product --> 
-	                    </div> <!-- /.products --> 
-	                  </div>
-	                  <!-- /.item -->
-                  	  
-                  	  <div class="col-sm-6 col-md-3 wow fadeInUp">
-	                    <div class="products">
-	                      <div class="product">
-	                         <div class="product-image">
-	                           <div class="image"> <a href="item.jsp"><img style="opacity: 1;" src="./images/products/p2.jpg" alt=""></a> </div>
-	                         </div> <!-- /.product-image -->
-	                         <div class="product-info text-center">
-	                           <div style="font-size: 14px; font-weight: 500; margin-top: 15px; white-space: nowrap;
-	                             overflow: hidden; text-overflow: ellipsis;"><a href="item.jsp">Category Name 2</a></div>
-	                           <div style="color: #388e3c; padding-top: 8px; white-space: nowrap; overflow: hidden;
-	                             text-overflow: ellipsis;">Deal Name 2</div>
-	                         </div> <!-- product-info --> 
-	                      </div> <!-- /.product --> 
-	                    </div> <!-- /.products --> 
-	                  </div>
-	                  <!-- /.item -->
-	                  
-	                  <div class="col-sm-6 col-md-3 wow fadeInUp">
-	                    <div class="products">
-	                      <div class="product">
-	                         <div class="product-image">
-	                           <div class="image"> <a href="item.jsp"><img style="opacity: 1;" src="./images/products/p3.jpg" alt=""></a> </div>
-	                         </div> <!-- /.product-image -->
-	                         <div class="product-info text-center">
-	                           <div style="font-size: 14px; font-weight: 500; margin-top: 15px; white-space: nowrap;
-	                             overflow: hidden; text-overflow: ellipsis;"><a href="item.jsp">Category Name 3</a></div>
-	                           <div style="color: #388e3c; padding-top: 8px; white-space: nowrap; overflow: hidden;
-	                             text-overflow: ellipsis;">Deal Name 3</div>
-	                         </div> <!-- product-info --> 
-	                      </div> <!-- /.product --> 
-	                    </div> <!-- /.products --> 
-	                  </div>
-	                  <!-- /.item -->
-	                  
-	                  <div class="col-sm-6 col-md-3 wow fadeInUp">
-	                    <div class="products">
-	                      <div class="product">
-	                         <div class="product-image">
-	                           <div class="image"> <a href="item.jsp"><img style="opacity: 1;" src="./images/products/p4.jpg" alt=""></a> </div>
-	                         </div> <!-- /.product-image -->
-	                         <div class="product-info text-center">
-	                           <div style="font-size: 14px; font-weight: 500; margin-top: 15px; white-space: nowrap;
-	                             overflow: hidden; text-overflow: ellipsis;"><a href="item.jsp">Category Name 4</a></div>
-	                           <div style="color: #388e3c; padding-top: 8px; white-space: nowrap; overflow: hidden;
-	                             text-overflow: ellipsis;">Deal Name 4</div>
-	                         </div> <!-- product-info --> 
-	                      </div> <!-- /.product --> 
-	                    </div> <!-- /.products --> 
-	                  </div>
-	                  <!-- /.item -->
-                </div> <!-- category-product -->
+
+				<div id="category-product" class="category-product">
+				</div> <!-- category-product -->
               </div> <!-- row -->
            </div> <!-- tab-content category-list -->
           </div>  <!-- search-result-container -->
@@ -443,13 +78,15 @@
 $(document).ready(function(){
     var ctxPath = "<%=request.getContextPath()%>";
 	headerFunctions(ctxPath);
+	fetchCateg(ctxPath);
+	getTodayDeals(ctxPath);
 })
 
 // Update the count down every 1 second
 var x = setInterval(function() {
 	
 	//Set the date we're counting down to
-	var countDownDate = new Date("Mar 23, 2018 15:37:25").getTime();
+	var countDownDate = new Date("Mar 24, 2018 23:59:59").getTime();
 	
     // Get todays date and time
     var now = new Date().getTime();
@@ -482,6 +119,169 @@ var x = setInterval(function() {
         document.getElementById("timer").innerHTML = "EXPIRED";
     }
 }, 1000);
+
+function fetchCateg(ctxPath) 
+{
+	$.ajax(
+	{
+		type : 'GET',
+		contentType : 'application/json',
+		url : ctxPath + "/webapi/categories",
+		dataType : "json", // data type of response
+		success :
+			function(data)
+			{
+				categorySideMenu(data,ctxPath);
+			},
+    	error:
+    		function() 
+    		{
+        	//alert("error occurred");
+    		}
+	});
+}
+	
+function categorySideMenu(result,ctxPath)
+{
+	for(var i in result)
+	{
+		var li_node = document.createElement("li");                 // Create a <li> node
+		li_node.className="dropdown";
+		li_node.setAttribute("id", "li__"+result[i].id);
+		li_node.setAttribute("name", result[i].categoryName);
+		var dropdownCont = "dropdownCont(this,'"+ctxPath+"')";
+		var scrt_var = 10; 
+		var onclickContent = "location.href=this.href+'?key='+scrt_var;";
+		var data = " <a href='category.jsp' style='color:black' data-hover='dropdown' "+
+				 " onmouseover="+dropdownCont+" onmouseout='setTimeout(dropdownBak,2000, this);' "+
+		         "class='category-dropdown dropdown-toggle' data-toggle='dropdown' id='"+
+		         result[i].id+"'>"+	result[i].categoryName +
+				"</a>";
+		var data1 = "<ul style='width:80%' class='dropdown-menu mega-menu'>"+
+					"<li>"+
+						"<div class='yamm-content'>"+
+							"<div class='row'>"+
+								"<div class='col-menu'>"+
+									"<ul class='links list-unstyled' id='ul__"+ result[i].id+"'>"+
+					"</ul></div></div></li></ul>";
+		document.getElementById("sidebarCat").appendChild(li_node);
+		$(li_node).append(data + data1);
+	} 
+
+}
+	
+function dropdownCont(obj,ctxPath)
+{
+	var categoryid = obj.id;
+//	var ctxPath = "http://localhost:8080/flopkartPrototype";
+		$.ajax(
+		{
+			type : 'POST',
+			contentType : 'application/json',
+			url : ctxPath + "/webapi/subcategories/category/"+categoryid,
+			dataType : "json", // data type of response
+			success : 
+				function(data)
+				{
+					subCategoryDrop(data,categoryid);
+				},
+	    	error:
+	    		function() 
+	    		{
+	        	//alert("error occurred");
+	    		}
+		});
+ 	$(obj).css("color","blue");
+ 	$('#li__'+obj.id).addClass('open');
+}
+
+function subCategoryDrop(result,categoryid)
+{
+	var data = "";
+	if(Object.keys(result).length>0)
+	{	
+		for(var i in result)
+		{
+			data = data + "<li> <a href='category.jsp?id="+result[i].id+"'>"
+					+result[i].subcategoryName+"</a></li>";
+		}
+		$('#ul__'+categoryid).html(data);
+	}
+ 
+	
+	else
+		$('#li__'+categoryid).removeClass('open');
+		
+
+}
+
+function dropdownBak(obj)
+{
+ 	$(obj).css("color","black");
+ 	$('#li__'+obj.id).removeClass('open');
+// 	$('#ul_'+obj.id).empty();
+}
+
+function getTodayDeals(ctxPath){
+	$.ajax({
+		type : 'GET',
+		url : ctxPath + "/webapi/listingDeals/today",
+		dataType : "json", // data type of response
+		success : function(data)
+				  {
+					getListingDets(data,ctxPath);
+					getDealDets(data,ctxPath);
+			   },
+			error: function() 
+		       { //alert("error occurred"); 
+		       }
+	});
+}
+
+function getListingDets(data,ctxPath){
+	<% AccessProperties ap = new AccessProperties(); %>
+    var imgServerURL = "<%=ap.getImageServerURL() %>"; 
+	for(var i=0; i<data.length; i++){
+		$.ajax({
+			type : 'GET',
+			async:false,
+			url : ctxPath + "/webapi/listings/"+data[i].listingid,
+			dataType : "json", // data type of response
+			success : function(res){
+				var valu = "";
+				valu = "<div class='col-sm-6 col-md-3 box fadeInUp'><div class='products'>"+
+	    		"<div class='product'><div class='product-image'><div class='image'><a href='item.jsp?id="+res.id+"'>"+
+	    		"<img style='display: block; object-fit: contain; width: 250px; height: 250px;' src='"+ (imgServerURL+res.imgUrl) +"' alt=''>"+
+	    		"</a></div></div><div class='product-info text-center'>"+
+			         "<div style='font-size: 14px; font-weight: 500; margin-top: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;'>"+
+			         "<a href='item.jsp?id="+res.id+"'>"+res.listingName+"</a></div>"+
+			         "<div style='color: #388e3c; padding-top: 8px; white-space: nowrap; overflow: hidden;"+
+			           "text-overflow: ellipsis;' id='demo"+i+"'>"+"</div></div></div></div></div>"
+				$("#category-product").append(valu);
+			},
+			error: function(){
+				//alert("error occurred"); 
+			}
+		});
+	}	
+}
+
+function getDealDets(data,ctxPath){
+	for(var i=0; i<data.length; i++){
+		$.ajax({
+				type : 'GET',
+				async:false,
+				url : ctxPath + "/webapi/deals/"+data[i].dealid,
+				dataType : "json", // data type of response
+				success : function(resul){
+					document.getElementById("demo"+i).innerHTML = resul.dealname+" ";	
+				},
+				error: function(){
+					//alert("error occurred"); 
+				}
+			});
+	}
+}
 </script>
 </body>
 </html>

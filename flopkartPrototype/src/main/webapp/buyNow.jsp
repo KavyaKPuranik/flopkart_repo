@@ -246,7 +246,7 @@
 		          </div>
 			      <div class="col-md-6 sidebar"> 
 			      		<label>Pin</label>
-		              <input type="password" class="form-control input-lg"  name="pin"  id="pin" required>
+		              <input type="password" maxlength="4" class="form-control input-lg"  name="pin"  id="pin" required>
 		          	</div>
 		         </div>
       			<div class="row">

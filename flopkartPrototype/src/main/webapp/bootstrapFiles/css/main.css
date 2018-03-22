@@ -1566,6 +1566,8 @@ ul.horizontal {
 
 .yamm .dropdown-menu .yamm-content .col-menu {min-width:150px}
 
+.yamm .dropdown-menu .yamm-content .col1-menu {width:50px}
+
 .yamm .dropdown-menu .yamm-content .links li a {
   padding: 4px 0px;
   font-family: 'Open Sans', sans-serif;
@@ -1696,51 +1698,59 @@ ul.horizontal {
 .sidebar .side-menu .head .icon {
   margin-right: 5px;
 }
-.sidebar .side-menu nav .nav > li {
-  -moz-border-bottom-colors: none;
-  -moz-border-left-colors: none;
-  -moz-border-right-colors: none;
-  -moz-border-top-colors: none;
-   -webkit-transition: all 0.3s ease 0s;
-  -moz-transition: all 0.3s ease 0s;
-  -o-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
+ .sidebar .side-menu nav .nav > li {
+/*   -moz-border-bottom-colors: none; */
+/*   -moz-border-left-colors: none; */
+/*   -moz-border-right-colors: none; */
+/*   -moz-border-top-colors: none; */
+/*    -webkit-transition: all 0.3s ease 0s; */
+/*   -moz-transition: all 0.3s ease 0s; */
+/*   -o-transition: all 0.3s ease 0s; */
+/*   transition: all 0.3s ease 0s; */
   position: relative;
   width: 100%;
-  border-bottom: 1px solid #eaeaea;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+/*   border-bottom: 1px solid #eaeaea; */
 
 }
 
 .sidebar .side-menu nav .nav > li:last-child {border-bottom:none}
 
 .sidebar .side-menu nav .nav > li > a {
-  padding: 13px 15px;
-  color: #666666;
+  display: block;
+  padding: 0 24px;
+  font-size: 14px;
+  line-height: 2.6;
+  color: #3a3a3a;
+/*   transition: margin-left 0.5s ease; */
+  width: 100%;
   font-family: 'Open Sans', sans-serif;
   letter-spacing:0.2px
 }
-.sidebar .side-menu nav .nav > li > a:after {
-  color: #bababa;
-  content: "\f105";
-  float: right;
-  font-size: 12px;
-  height: 20px;
-  line-height: 18px;
-  -webkit-transition: all 0.3s ease 0s;
-  -moz-transition: all 0.3s ease 0s;
-  -o-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
-  width: 10px;
-  font-family: FontAwesome;
-}
-.sidebar .side-menu nav .nav > li > a .icon {
-  font-size: 16px;
-  margin-right: 12px;
-}
+/* .sidebar .side-menu nav .nav > li > a:after { */
+/*   color: #bababa; */
+/*   content: "\f105"; */
+/*   float: right; */
+/*   font-size: 12px; */
+/*   height: 20px; */
+/*   line-height: 18px; */
+/*   -webkit-transition: all 0.3s ease 0s; */
+/*   -moz-transition: all 0.3s ease 0s; */
+/*   -o-transition: all 0.3s ease 0s; */
+/*   transition: all 0.3s ease 0s; */
+/*   width: 10px; */
+/*   font-family: FontAwesome; */
+/* } */
+/* .sidebar .side-menu nav .nav > li > a .icon { */
+/*   font-size: 16px; */
+/*   margin-right: 12px; */
+/* } */
 .sidebar .side-menu nav .nav > li > a:hover,
 .sidebar .side-menu nav .nav > li > a:focus {
-  background: #fff;
-
+  background-color:#f0f0f0;
 }
 .sidebar .side-menu nav .nav > li > a:hover .icon,
 .sidebar .side-menu nav .nav > li > a:focus .icon {
