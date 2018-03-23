@@ -65,7 +65,7 @@ function checkCookie()
     if (result != "") 
     {	
     		var user = JSON.parse(result);
-		setCookie("seller_details", result, 10);
+		setCookie("seller_details", result, 30);
 		document.getElementById("sellername").innerText = user.firstName;
 		$('#sellerid').val(user.id);
 		
@@ -148,14 +148,14 @@ function checkCookie()
            		    "<div style = 'font-size:15px; position:left; font-family:verdana;margin-right:10px;display:inline-block'>"+
            		    "<i class='fa fa-inr' style='font-size:15px'></i>Actual Price :  "+result.ActualPrice+"</div>"+
            		    "<div style = 'font-size:15px;'>Quantity :  "+result.quantity+"</div>"+
-           		    "<div style = 'font-size:15px;color:red'>Deal:  ";
+           		    "<span style='display:inline-flex;font-size:15px;color:red'>Deal: &nbsp; <div id='dealid_"+listingid+"'>";
+           		 	data += "</div></span></div></div>";
+     	       		$('#listing').append(data);
            		 	if(res!=null){
            		    	for(var j=0; j<res.length; j++) {
-           					data += res[j].dealid+" ";
+           		    		getDealname(ctxPath,listingid,res[j].dealid);
            				}
            			}
-           			data += "</div></div></div>";
-        	       	$('#listing').append(data);
            		},
            		error : function() {
            			alert("error")
@@ -163,6 +163,20 @@ function checkCookie()
            	 });
 		}
 		
+		function getDealname(ctxPath,listingid,dealid){
+			$.ajax({
+           		type : 'GET',
+           		contentType : 'application/json',
+           		url : ctxPath + "/webapi/deals/"+dealid,
+           		dataType : "json", // data type of response
+           		success: function(deal){
+           			document.getElementById("dealid_"+listingid).innerHTML = deal.dealname;	
+           		},
+           		error: function(){
+           			
+           		}
+           	});
+		}
 		
 		
 	    

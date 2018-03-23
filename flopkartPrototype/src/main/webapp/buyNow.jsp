@@ -135,7 +135,7 @@
 									<div class="row">
 									                                                                 
 								  <div class="table-responsive">          
-									  <table class="table">
+									  <table id="order_table" class="table">
 									  <thead>
 								    	<tr>
 								    		<th>Item Name</th>
@@ -143,10 +143,9 @@
 								    		<th>Marked Price</th>
 								    		<th>Discount</th>
 								    		<th>Discounted Price</th>
-									    
 										</tr>
 								    	</thead>
-								    	<tbody>
+								    	<tbody id="orderSummary_body">
 								    	<tr>
 								    	<% int quant = Integer.parseInt(request.getParameter("quant"));%>
 								    	<% int listingamount = Integer.parseInt(request.getParameter("listingamount"));%>
@@ -157,29 +156,38 @@
 								    		<td><%=quant%></td>
 								    		<td><%=listingamount%></td>
 								    		<td><%=discount%> %</td>
-								    		<td><%=price%></td>
+								    		<td class="classPrice"><%=price%></td>
 								    	</tr>
 								    	<tr>
-								    		<th colspan="4">Total Price:</th>
+								    		<th colspan="3">Total Price:</th>
 								    		<% int total = quant * price;%>
+											<td id="calc"></td>
 	
 	
-	
-								    		<th><%=total %></th>
+								    		<th id="total_th"><%=total %></th>
 								    	</tr>
 								    	</tbody>
 								    </table>
 							    </div>
-
-
-							   <div class="seller-info" id="seller-info" style='color:green; font-size:15px'>
+								<div id="deal_div" class="row"> 
+								    	
+		                            <div id="dealDetails_div" class="row">
+									</div>
+		                            <div class="col-md-3 pull-right">
+		                              <% int dealid = Integer.parseInt(request.getParameter("dealid"));%>
+								    	<input type="button" id="applydeal" 
+								    	class="btn btn-warning" onclick="applyDeal()" value="Apply Deal" >
+									</div>
+								</div>
+							   <div class="seller-info row" id="seller-info" style='color:green; 
+							   font-size:15px; margin:10px 10px 10px 10px'>
 							   <% String sname=request.getParameter("sellername");%>
 							   Seller Name: <%=sname %>
 							   </div>                             
 							   
 	                              <div class="row">
 		                            <div class="col-md-3">
-		                              <button id="confirmOrder" type="button" class="btn btn-primary" 
+		                              <button id="confirmOrder" type="button" class="btn btn-success" style='margin:0px 10px 10px 10px'
 		                              onclick="return insertOrder()">Confirm Order</button>
 									</div>
 		                            <div class="col-md-3 pull-right" style="margin-top:5px;color:red" 
@@ -306,6 +314,7 @@ $(document).ready(function(){
     var ctxPath = "<%=request.getContextPath()%>";
 	headerFunctions(ctxPath);
 	show_Welcome();
+	fetchDeal();
 })
 
 function buynowvalidation() 
@@ -423,9 +432,11 @@ function paymentOption()
 			success : function() {
 				$("#orderProgress").append('<li><a href="#" class="progress-class glyphicon glyphicon-arrow-down"></a></li>');
 				$("#orderProgress").append('<li><a href="#" class="orderPlaced progress-class"><b>Order Placed</b></a></li>');
-				$("#orderProgress").append('<li><a href="#" id="arrow" hidden="hidden" class="progress-class glyphicon glyphicon-arrow-down"></a></li>');
-				$("#orderProgress").append('<li><a href="#" id="payStatus" hidden="hidden" class="progress-class"><b id="paymentStatus"></b></a></li>');
+				$("#orderProgress").append('<li><a href="#" id="arrow" class="progress-class glyphicon glyphicon-arrow-down"></a></li>');
+				$("#orderProgress").append('<li><a href="#" id="payStatus" class="progress-class"><b id="paymentStatus"></b></a></li>');
 				$("#confirmOrder").prop('disabled', true);
+				$("#applydeal").prop('disabled', true);
+				$("#arrow").hide();
 			},
 			error: function() {
 				alert(JSON.stringify(err));
@@ -474,7 +485,7 @@ function order_formToJSON()
 	  int orderid = (int)timeStamp.getTime();%>
     var user = getCookie("user_details");
 	var userid = JSON.parse(user).id;
-	var TotalAmount =<%=total %>;
+	var TotalAmount = parseInt($("#total_th").text());
 	<%session.setAttribute("totalamount","TotalAmount");
 	Date myDate = new Date();
 	String today = new SimpleDateFormat("yyyy-MM-dd").format(myDate);%>
@@ -499,6 +510,144 @@ function flopkartBank()
 	
 }
 
+function displayDetails(id)
+{
+	var ctxPath = "<%=request.getContextPath()%>";
+	
+	var total = parseInt($("#total_th").text());
+	$.ajax(
+			{
+				type : 'GET',
+				contentType : 'application/json',
+				url : ctxPath + "/webapi/listings/"+id,
+				success : function(listing_json)
+				{
+					var actualPrice = listing_json.price - (listing_json.discount*listing_json.price/100);
+					var table_data =  	"<tr>"+
+			    	"	<td>"+listing_json.listingName+"</td>"+
+			    	"	<td>1</td>"+
+			    	"	<td>"+listing_json.price+"</td>"+
+			    	"	<td>"+listing_json.discount+"%</td>"+
+			    	"	<td class='classPrice'>"+actualPrice+"</td>"+
+			    	"</tr>";
+			    	$("#orderSummary_body").prepend(table_data);
+				},
+				error: function(err) 
+				{
+					alert(JSON.stringify(err));
+				}
+		});
+}
+
+function applyDeal()
+{
+	var test_val = false;
+	var quant = <%=quant%>;
+	for(var j=<%=quant%>;j<=3;j++)
+	{
+		if($("#itemlist_"+j).val()==0)
+			test_val=true;	
+	}
+	if(test_val)
+		alert("Select appropriate items to avail deal");
+	else
+	{
+		var total = parseInt($("#total_th").text());
+		var min = total;
+		for(var j=<%=quant%>;j<=3;j++)
+		{
+			var listing_json = JSON.parse($("#itemlist_"+j).val());
+			var actualPrice = listing_json.price - (listing_json.discount*listing_json.price/100);
+			var table_data =  	"<tr>"+
+	    	"	<td>"+listing_json.listingName+"</td>"+
+	    	"	<td>1</td>"+
+	    	"	<td>"+listing_json.price+"</td>"+
+	    	"	<td>"+listing_json.discount+"%</td>"+
+	    	"	<td class='classPrice'>"+actualPrice+"</td>"+
+	    	"</tr>";
+	    	$("#orderSummary_body").prepend(table_data);
+	    	total = total + actualPrice;
+	    	min = Math.min(min,actualPrice);
+		}
+		var final_val = total - min;
+		$("#calc").text(total +" - "+min);
+		$("#total_th").text(final_val);
+		$("#applydeal").val("Deal Applied");
+		$("#applydeal").prop('disabled', true);
+	}
+}
+
+function fetchDeal()
+{
+	var dealid = <%=dealid%>;
+	if(dealid===0)
+		$("#deal_div").hide();
+	else
+		{
+			var ctxPath = "<%=request.getContextPath()%>";
+			$.ajax(
+			{
+				type : 'GET',
+				contentType : 'application/json',
+				url : ctxPath + "/webapi/deals/"+dealid,
+				success : function(deal_json)
+				{
+					var dealname = deal_json.dealname.replace(/ /g, "").toLowerCase();
+					if(dealname=="buy3get1")
+					{
+						var dealTitle = "<h3 style='color:purple;margin-left:40px'>Buy 3 Get 1 Free!</h3>";
+						$("#dealDetails_div").append(dealTitle);
+						
+						for(var j=<%=quant%>;j<=3;j++)
+						{
+							var dropdown_item = "<select id='itemlist_"+j+"' class='itemlist' style='margin-left:40px'>"+
+							"<option value=' "+ 0 +" '>Select an item</option>"+
+							"</select>"
+							$("#dealDetails_div").append(dropdown_item);
+						}
+						
+						$.ajax(
+								{
+									type : 'GET',
+									contentType : 'application/json',
+									url : ctxPath + "/webapi/listingDeals/deal/"+dealid,
+									success : function(listing_deals_json)
+									{
+										
+										for(var i=0; i<listing_deals_json.length; i++)
+											$.ajax(
+												{
+													type : 'GET',
+													contentType : 'application/json',
+													url : ctxPath + "/webapi/listings/"+listing_deals_json[i].listingid,
+													success : function(listing_json)
+													{
+														var actualPrice = listing_json.price - (listing_json.discount*listing_json.price/100);
+														//alert(listing_json.listingName);
+														var l_data = "<option value='"+JSON.stringify(listing_json)+"'>"+
+															listing_json.listingName+" - "+actualPrice+"</option>";
+														$(".itemlist").append(l_data);
+													},
+													error: function(err) 
+													{
+														alert(JSON.stringify(err));
+													}
+											});
+									},
+									error: function(err) 
+									{
+										alert(JSON.stringify(err));
+									}
+							});
+					}
+				},
+				error: function(err) 
+				{
+					alert(JSON.stringify(err));
+				}
+			});
+		}
+}
 
 function proceedToPay()
 {
@@ -552,7 +701,7 @@ function proceedToPay()
 								}
 								else
 								{
-									var TotalAmount =<%=total %>;
+									var TotalAmount =parseInt($("#total_th").text());
 									if(parseInt(data.balance)>=parseInt(TotalAmount))
 									{
 											$("#accWarning").hide();

@@ -125,7 +125,7 @@
 								<!-- /.single-product-gallery -->
 								<div class="buynowdiv">
 									<form action="buyNow.jsp">
-										<button id="buynow" class="buynow">Buy Now</button>
+										<button id="buynow" onclick="return checkLogin()" class="buynow">Buy Now</button>
 										<button class="addtocart" id="addtocart">Add to cart
 										</button>
 										<input type="text" name="listingid"
@@ -307,7 +307,7 @@ $(document).ready(function(){
 				var img_data = "<div id='owl-single-product'>"+
 				"    <div class='single-product-gallery-item' id='slide1'>"+
 				"        <a data-lightbox='image-1' data-title='Gallery' href='"+imgServerURL+listing_json.imgUrl+"'>"+
-				"            <img class='img-responsive' alt='' width='480px' src='./images/blank.gif' data-echo='"+imgServerURL+listing_json.imgUrl+"' />"+
+				"            <img class='img-responsive' alt='' style='display: block; object-fit: contain; width: 480px; height: 500px;' src='./images/blank.gif' data-echo='"+imgServerURL+listing_json.imgUrl+"' />"+
 				"        </a>"+
 				"    </div>"+
 				"</div>";
@@ -408,6 +408,9 @@ function getDealDetails(ctxPath){
 				$("#dealid").val(deal[0].dealid);
 				getDealName(ctxPath);
 			}
+			else {
+				$("#dealid").val(0);
+			}
 		},
 		error: function(){
 			//alert("error occurred"); 
@@ -416,7 +419,7 @@ function getDealDetails(ctxPath){
 }
 
 function getDealName(ctxPath){
-	alert($("#dealid").val());
+	//alert($("#dealid").val());
 	if($("#dealid").val()!=""){
 		var dealid = $("#dealid").val();
 		$.ajax({
@@ -431,6 +434,15 @@ function getDealName(ctxPath){
 				//alert("error occurred"); 
 			}
 		});
+	}
+}
+
+function checkLogin()
+{
+	if(getCookie("user_details")=="") 
+	{
+		alert("Please Login");
+		return false;
 	}
 }
 </script>

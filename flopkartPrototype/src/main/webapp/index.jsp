@@ -47,13 +47,13 @@
 									<div class="caption bg-color vertical-center text-left">
 										<div class="slider-header fadeInDown-1">Women Fashion Spring 2018</div>
 										<div class="big-text fadeInDown-1">
-											<span class="highlight"> Rs. 100 off</span>
+											<span class="highlight">Buy 3 Get 1 !</span>
 										</div>
 										<div class="excerpt fadeInDown-2 hidden-xs">
 											<span>New Spring collection! Floral designs and more!</span>
 										</div>
 										<div class="button-holder fadeInDown-3">
-											<a href="underConstruct.html"
+											<a href="offerZone.jsp"
 												class="btn-lg btn btn-uppercase btn-primary shop-now-button">Shop
 												Now</a>
 										</div>

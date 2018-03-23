@@ -24,12 +24,18 @@ public class FlopkartListingDealDAO extends HibernateDAO<FlopkartListingDeal>
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		String todayDate = dateFormat.format(date);
-		return super.findAll("FlopkartListingDeal", "startDate", todayDate);
+		return super.findAll(entity_name, "startDate", todayDate);
 	}
 	
 	public List<FlopkartListingDeal> getFlopkartListingDealsByListingId(int listingId)
 	{
-		List<FlopkartListingDeal> listingdeals =  super.findAll("FlopkartListingDeal", "listingid", listingId);
+		List<FlopkartListingDeal> listingdeals =  super.findAll(entity_name, "listingid", listingId);
+		return listingdeals;
+	}
+	
+	public List<FlopkartListingDeal> getFlopkartListingDealsByDealId(int dealId)
+	{
+		List<FlopkartListingDeal> listingdeals =  super.findAll(entity_name, "dealid", dealId);
 		return listingdeals;
 	}
 	

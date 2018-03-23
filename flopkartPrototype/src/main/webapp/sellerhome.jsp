@@ -53,7 +53,7 @@
       	<div class="search-result-container"  style="text-align:center;">
                <div class="widget-header" style="padding-top:60px">
 	            
-	           		<button style="font-size:18px ;border-color:#777 ;border-radius: 2px; color:#000; padding:15px 50px; background-color: #ffdb4d;" onClick="window.location='listingDeal.jsp';">
+	           		<button style="font-size:18px ;border-color:#777 ;border-radius: 2px; color:#000; padding:15px 50px; background-color: #ffdb4d;" onClick="window.location='sellerListingDeal.jsp';">
 					 ADD DEAL TO LISTING
 					 </button>
 	            </div>   
@@ -99,7 +99,7 @@ function checkCookie()
     if (result != "") 
     {	
     		var user = JSON.parse(result);
-		setCookie("seller_details", result, 10);
+		setCookie("seller_details", result, 30);
 		document.getElementById("sellername").innerText = user.firstName;
 	
     } 

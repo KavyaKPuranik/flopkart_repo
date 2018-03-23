@@ -542,7 +542,7 @@ function checkCookie()
 	//alert(user);
     if (user != "") 
     {
-    	setCookie("user_details", user, 10);
+    	setCookie("user_details", user, 30);
         showUser(JSON.parse(user));
     } 
     else 

@@ -57,6 +57,16 @@ public class FlopkartListingDealServices
 		List<FlopkartListingDeal> deals = dao.getFlopkartListingDealsByListingId(listingid);
 		return deals;
 	}
+
+	@GET
+	@Path("/deal/{id}")
+	@Produces("application/json")
+	public List<FlopkartListingDeal> getFlopkartListingDealsByDealId(@PathParam("id") int dealid)
+	{
+		FlopkartListingDealDAO dao = new FlopkartListingDealDAO();
+		List<FlopkartListingDeal> deals = dao.getFlopkartListingDealsByDealId(dealid);
+		return deals;
+	}
 	
 	@POST
 	@Path("/create")

@@ -208,7 +208,7 @@ function sellerLogin(){
  				window.location.reload(true);
 				return false;
 			}
-			setCookie("seller_details",JSON.stringify(result),10);
+			setCookie("seller_details",JSON.stringify(result),30);
 			
 // 			alert(getCookie("seller_details"));
 			window.location.href = "sellerhome.jsp";

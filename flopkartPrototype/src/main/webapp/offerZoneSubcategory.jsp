@@ -157,7 +157,7 @@ function categorySideMenu(result,ctxPath)
 		var dropdownCont = "dropdownCont(this,'"+ctxPath+"')";
 		var scrt_var = 10; 
 		var onclickContent = "location.href=this.href+'?key='+scrt_var;";
-		var data = " <a href='category.jsp' style='color:black' data-hover='dropdown' "+
+		var data = " <a href='offerZoneSubcategory.jsp' style='color:black' data-hover='dropdown' "+
 				 " onmouseover="+dropdownCont+" onmouseout='setTimeout(dropdownBak,2000, this);' "+
 		         "class='category-dropdown dropdown-toggle' data-toggle='dropdown' id='"+
 		         result[i].id+"'>"+	result[i].categoryName +
@@ -207,7 +207,7 @@ function subCategoryDrop(result,categoryid)
 	{	
 		for(var i in result)
 		{
-			data = data + "<li> <a href='category.jsp?id="+result[i].id+"'>"
+			data = data + "<li> <a href='offerZoneSubcategory.jsp?id="+result[i].id+"'>"
 					+result[i].subcategoryName+"</a></li>";
 		}
 		$('#ul__'+categoryid).html(data);

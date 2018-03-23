@@ -117,7 +117,7 @@ function checkCookie()
     if (result != "") 
     {	
     		var user = JSON.parse(result);
-		setCookie("seller_details", result, 10);
+		setCookie("seller_details", result, 30);
 		document.getElementById("sellername").innerText = user.firstName;
 	
     } 
@@ -222,7 +222,7 @@ function validate(){
 	var dealid = $("#dealId").val();
 	var listingid = $("#listingId").val();
 	var today = new Date();
-	alert(today+" "+start)
+	//alert(today+" "+start)
 	var bool1 = (end - start < 0);
 	var bool2 = (start - today < 0);
 	if(bool1==true){ //end < start

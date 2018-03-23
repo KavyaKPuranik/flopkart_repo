@@ -68,7 +68,7 @@ function checkCookie()
     if (result != "") 
     {	
     		var user = JSON.parse(result);
-		setCookie("seller_details", result, 10);
+		setCookie("seller_details", result, 30);
 		document.getElementById("sellername").innerText = user.firstName;
 		$('#sellerid').val(user.id);
 		

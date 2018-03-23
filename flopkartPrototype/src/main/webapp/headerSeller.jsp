@@ -61,7 +61,7 @@
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-2 logo-holder"> 
           <!-- ============================================================= LOGO ============================================================= -->
-          <div class="logo"> <a href="index.jsp"> <img  height="50px" src="./images/sellerHub/seller-hub-logo.png" alt=""> </a> </div>
+          <div class="logo"> <a href="sellerhome.jsp"> <img  height="50px" src="./images/sellerHub/seller-hub-logo.png" alt=""> </a> </div>
           <!-- /.logo --> 
           <!-- ============================================================= LOGO : END ============================================================= --> 
           </div>
@@ -106,7 +106,7 @@
 									<li class="active dropdown yamm-fw">
 										<a	href="sellerViewOrder.jsp" style="color:black">VIEW ORDERS</a></li>
 									<li class="active dropdown yamm-fw">
-										<a	href="listingDeal.jsp" style="color:black">ADD DEAL TO LISTING</a></li>
+										<a	href="sellerListingDeal.jsp" style="color:black">ADD DEAL TO LISTING</a></li>
 								</ul>
 								<!-- /.navbar-nav -->
 								<div class="clearfix"></div>

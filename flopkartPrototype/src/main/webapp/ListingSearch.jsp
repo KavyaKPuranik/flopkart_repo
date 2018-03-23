@@ -2,7 +2,6 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="com.iiitb.ooadvoid.AccessProperties" %>
 <!DOCTYPE html>
-<!-- saved from url=(0060)http://www.themesground.com/flipmart-demo/HTML/category.jsp -->
 <html>
 <head>
 	<%@include file="metaContent.jsp" %>
@@ -56,7 +55,8 @@
               <input type="number" style = 'font-size:20px; text-align:center;' value="100000" name="MaxPrice" id="MaxPrice" >
            </div>
            <div id="priceError" style="font-size:15px;color:red">Minimum price cannot be larger than maximum price</div>
-              <button type="button" id="applyFilter" style="margin:auto;display:block;margin-top:40px" onclick="loadListings()"><b>Apply Filter</b></button>
+           <div id="Filter"></div>
+           <button type="button"  class="btn btn-primary" id="applyFilter" style="margin:auto;display:block;margin-top:40px" onclick="loadListings()"><b>Apply Filter</b></button>
         </section>
         
       </div>
@@ -90,8 +90,42 @@ $(document).ready(function()
 	    var ctxPath = "<%=request.getContextPath()%>";
 		headerFunctions(ctxPath);		
 		$("#priceError").hide();
+		loadGenericFilter("brand");
+		loadGenericFilter("colour");
 		loadListings();
 })
+
+    function loadGenericFilter(prop)
+	{
+		var ctxPath = "<%=request.getContextPath()%>";
+    	var subcategoryid = "<%=request.getParameter("id")%>";
+	        $.ajax(
+	        		{
+	        			type : 'GET',
+	        			contentType : 'application/json',
+	        			url : ctxPath + "/webapi/listings/subcategory/"+subcategoryid,
+	        			async : false,
+	        			dataType : "json", // data type of response
+	        			success : function(result){
+	        				var uniqueProp = [];
+	        				for(i = 0; i< result.length; i++){    
+	        				    if(uniqueProp.indexOf(result[i][prop].toLowerCase()) === -1){
+	        				        uniqueProp.push(result[i][prop].toLowerCase());        
+	        				    }        
+	        				}
+	        				var data="<div style='text-align:center; margin-top:50px'><select id='"+prop+"_Filter'>"+"<option value='0'>Select a " +prop+"</option>";
+	        	            for(i=0;i<uniqueProp.length;i++){
+	        	               data+="<option value='"+(i+1)+"'>"+uniqueProp[i].toLowerCase()+"</option>";
+	        	            }
+	        	            data += "</select></div>";
+	        	            $('#Filter').append(data);
+	        	    	},
+	        	    	error:function(){
+	        	    		alert("error occurred");
+	        	        	
+	        	    	}
+	        		});
+	}
 	
 	function loadListings(){
 	$('#listing').empty();
@@ -107,7 +141,7 @@ $(document).ready(function()
 	        			success : function(result){
 	        				for (var i in result){
 	        					var ActualPrice = Math.round(result[i].price - (result[i].discount/100)*result[i].price);
-	        					if(ActualPrice <  $("#MinPrice").val() || ActualPrice > $("#MaxPrice").val())
+	        					if(ActualPrice <  $("#MinPrice").val() || ActualPrice > $("#MaxPrice").val()||($("#brand_Filter option:selected").text().toLowerCase() != result[i].brand.toLowerCase() && $("#brand_Filter").val()!=0)||($("#colour_Filter option:selected").text().toLowerCase() != result[i].colour.toLowerCase() && $("#colour_Filter").val()!=0))
 	        						continue;
 	        				$.ajax(
 	        						{
@@ -137,8 +171,8 @@ $(document).ready(function()
 		result["ActualPrice"]=ActualPrice;
 		var data="";
 		data+="<div class='col-sm-4, box'><a href='item.jsp?id="+result.id+
-		"'> <div style='width: 260px;height: 250px;'>"+
-		"<img class='listingImage' style='max-height:100%; max-width:100%;' src='"+
+		"'> <div style=''>"+
+		"<img class='listingImage' style='display: block; object-fit: contain; width: 250px; height: 250px;' src='"+
 		imgServerURL+result.imgUrl+"' alt=''></div>"+
         "<div style = 'font-size:15px; text-align:center'>"+result.listingName+"</div>"+
         "<div style = 'font-size:10px; text-align:left; font-family:verdana;display:inline-block;margin-right:10px;color:green'>"+
@@ -213,7 +247,7 @@ $(document).ready(function()
     		{
     		var ActualPrice = Math.round(result[i].price - (result[i].discount/100)*result[i].price);
     		result[i]["ActualPrice"]=ActualPrice;
-    		if(ActualPrice <  $("#MinPrice").val() || ActualPrice > $("#MaxPrice").val())
+    		if(ActualPrice <  $("#MinPrice").val() || ActualPrice > $("#MaxPrice").val()||($("#brand_Filter option:selected").text() != result[i].brand && $("#brand_Filter").val()!=0)||($("#colour_Filter option:selected").text() != result[i].colour && $("#colour_Filter").val()!=0))
     			continue;
     		var data="";
     		data+="<div class='col-sm-4, box'><a href='item.jsp?id="+result[i].id+

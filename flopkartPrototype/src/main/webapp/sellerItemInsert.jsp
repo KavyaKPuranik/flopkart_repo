@@ -161,8 +161,23 @@
 	            </div>   
 			    <div class="row">
 			      <div class="col-md-5 sidebar"> 
-		              <input type="text" class="form-control input-lg"  name="clr" id="clr" 
-		              autocomplete="name"required >
+			        <select  id  = "clr" name="clr"  style="margin:20px;background-color: white; font-size: 19px;" required>
+			      	   <option value="Black">Black</option>
+					   <option value="Blue">Blue</option>
+					   <option value="Green">Green</option>
+					   <option value="Brown">Brown</option>
+					   <option value="Magenta">Magenta</option>
+					   <option value="White">White</option>
+					   <option value="Peach">Peach</option>
+					   <option value="Red">Red</option>
+					   <option value="Orange">Orange</option>
+					   <option value="Grey">Grey</option>
+					   <option value="Cyan">Cyan</option>
+					   <option value="Gold">Gold</option>
+					   <option value="Transparent">Transparent</option>
+					</select>
+<!-- 		              <input type="text" class="form-control input-lg"  name="clr" id="clr"  -->
+<!-- 		              autocomplete="name"required > -->
 		          </div>
 		         </div> 
         		</div>
@@ -344,7 +359,7 @@ function checkCookie()
     if (result != "") 
     {	
     	var user = JSON.parse(result);
-		setCookie("seller_details", result, 10);
+		setCookie("seller_details", result, 30);
 		document.getElementById("sellername").innerText = user.firstName;
 		sellerId(user);
 	
@@ -363,7 +378,7 @@ function resetCookie()
     var user = getCookie("user_details");
     if (user != "") 
     {
-		setCookie("user_details", user, 10);
+		setCookie("user_details", user, 30);
 		sellerId(JSON.parse(user));
     } 
     else 
