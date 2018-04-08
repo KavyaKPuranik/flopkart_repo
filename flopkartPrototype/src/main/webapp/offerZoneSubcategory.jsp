@@ -44,7 +44,21 @@
           </nav><!-- /.nav --> 
           <!-- /.megamenu-horizontal --> 
         </div>
-        <!-- /.side-menu --> 
+        <!-- /.side-menu -->
+        
+        <div class="side-menu animate-dropdown outer-bottom-xs">
+          <div style="border-bottom: solid 1px rgba(0, 0, 0, .05); padding: 8px 10px 10px 30px;">
+          <div style="display: inline-block; font-size: 20px; font-weight: bold; font-family: Arial, sans-serif; color: #000; 
+            line-height: 32px; ">
+    			Hot Combo Deals
+    	  </div></div>
+          <nav class="yamm megamenu-horizontal">
+            <ul id="sidebarDeal" class="nav">
+            </ul>
+          </nav><!-- /.nav --> 
+          <!-- /.megamenu-horizontal --> 
+        </div>
+        <!--  /side menu 2 --> 
         <!-- ================================== TOP NAVIGATION : END ================================== -->
    	  </div> <!-- col-md-2 -->
 	 
@@ -84,6 +98,7 @@ $(document).ready(function(){
     var ctxPath = "<%=request.getContextPath()%>";
 	headerFunctions(ctxPath);
 	fetchCateg(ctxPath);
+	fetchDeals(ctxPath);
 	getListingDet(ctxPath);
 })
 
@@ -295,6 +310,35 @@ function loadItems(listid,dealid,ctxPath){
 	   		{
 	       	//alert("error occurred");
 	   		}
+	});
+}
+
+function fetchDeals(ctxPath) 
+{
+	$.ajax(
+	{
+		type : 'GET',
+		contentType : 'application/json',
+		url : ctxPath + "/webapi/deals",
+		dataType : "json", // data type of response
+		success :
+			function(deals)
+			{
+				var data = "";
+				for(var i in deals)
+				{
+					if(deals[i].dealname === "50% off" || deals[i].dealname === "15% cashback")
+						continue;
+					data += "<li><a href='offerZoneDeal.jsp?id="+deals[i].id+"'>"
+							+deals[i].dealname+"</a></li>";
+				}
+				$("#sidebarDeal").html(data);
+			},
+    	error:
+    		function() 
+    		{
+        	//alert("error occurred");
+    		}
 	});
 }
 </script>

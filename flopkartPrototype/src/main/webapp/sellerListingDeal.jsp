@@ -390,6 +390,9 @@ $("#submitListingDeal").click(function()
 			data : JSON.stringify({ "discount": 50 }),
 			success : function()
 			{
+				swal("Deals have been added to the listings successfully!", {
+				      icon: "success",
+				});
 				window.location.reload(true);
 			},
 			error : function()

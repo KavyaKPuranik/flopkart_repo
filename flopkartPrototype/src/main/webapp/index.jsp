@@ -32,7 +32,7 @@
 											<span>Formal wear, Long kurtas and so many more!</span>
 										</div>
 										<div class="button-holder fadeInDown-3">
-											<a href="underConstruct.html"
+											<a href="offerZone.jsp"
 												class="btn-lg btn btn-uppercase btn-primary shop-now-button">Shop
 												Now</a>
 										</div>
