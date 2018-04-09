@@ -9,7 +9,7 @@
 <style>
 .box {
   transition: box-shadow .3s;
-  width: 300px;
+  width: 250px;
   height: 300px;
   background: #fff;
   float: left;
@@ -29,7 +29,7 @@
 	width: 10%;
 	padding: 18px 8px;
 	border-radius: 2px;
-	margin-left: 700px;
+	margin-left: 600px;
 }
 .buynow:hover {
 	color : white;
@@ -45,7 +45,7 @@
         <!-- ================================== TOP NAVIGATION ================================== -->
         <div class="side-menu animate-dropdown outer-bottom-xs">
           <div class="headOfferZone"></div>
-          <div style="border-bottom: solid 1px rgba(0, 0, 0, .05); padding: 8px 10px 10px 30px;">
+          <div style="border-bottom: solid 1px rgba(0, 0, 0, .05);padding-left: 8px; padding-bottom: 10px; padding-top:10px">
           <div style="display: inline-block; font-size: 20px; font-weight: bold; font-family: Arial, sans-serif; color: #000; 
             line-height: 32px; ">
              <i style="color:#157ed2; width: 15px; height: 15px; vertical-align: middle;
@@ -109,6 +109,11 @@
 $(document).ready(function(){
     var ctxPath = "<%=request.getContextPath()%>";
 	headerFunctions(ctxPath);
+	var user = getCookie("user_details");
+    if (user != "") 
+    {
+		setCookie("user_details", user, 30);
+    } 
 	fetchCateg(ctxPath);
 	fetchDeals(ctxPath);
 });
@@ -262,8 +267,13 @@ function getDealDet(ctxPath,mod,col){
 		dataType : "json", // data type of response
 		success : function(listingDeal)
 			{
+				var today = new Date();
 				var num = listingDeal.length/mod;
 				for(var i=0; i<num; i++){
+					var enddate = new Date(listingDeal[parseInt(i)+1].enddate);
+					if(enddate < today){
+						continue;
+					}
 					var data = "<div class='panel panel-default' style='border-width:2px; border-color: black'><div class='panel-heading' id='panelHead"+i+"'>COMBO OFFER "+(parseInt(i)+1)+"</div>"+
 					  "<div class='panel-body'>"+
 					  "<div style='font-size:15px; color: green'>Combo Description: "+listingDeal[parseInt(i)+1].comboDesc+"</div>"+"<br/>"+
@@ -271,7 +281,7 @@ function getDealDet(ctxPath,mod,col){
 					  "</div>"+
 					  "<div class='panel-footer'>"+
 					  "<div style='font-size: 20px;color: red; display:inline-flex'> OFFER PRICE: &nbsp; <i class='fa fa-rupee-sign'></i> &nbsp; ( <div id='total"+i+"'></div>"+"  &nbsp; -  &nbsp; "+"<div id='minimum"+i+"'></div> )</div>"+
-					  "<a href='buyNowDeal.jsp?comboid="+listingDeal[parseInt(i)+1].comboid+"' class='buynow' id='buynow'>Buy Now</a>"+
+					  "<button onclick='buynow("+listingDeal[parseInt(i)+1].comboid+")' class='buynow' id='buynow'>Buy Now</a>"+
 					  "</div>"+
 					  "</div>";
 					$("#deal-product").append(data);
@@ -381,6 +391,16 @@ function fetchDeals(ctxPath)
         	//alert("error occurred");
     		}
 	});
+}
+
+function buynow(comboid){
+	var user = getCookie("user_details");
+	if(user==""){
+		swal("Please login");
+	}
+	else{
+		window.location.href= "buyNowDeal.jsp?comboid="+comboid;
+	}
 }
 </script>
 </body>

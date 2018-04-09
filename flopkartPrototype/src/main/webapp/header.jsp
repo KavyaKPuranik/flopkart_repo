@@ -303,6 +303,9 @@
 											<a href="sellerHub.jsp"><i style="color: #157ed2"
 												class="fas fa-briefcase"></i> Sell on Flopkart</a></li>
 									<li role="presentation" class="divider"></li>
+									<li role="presentation" style="display: flex; align-items: center; width: 100%;"><a href="compare.jsp">
+									<i style="color: #157ed2" class="far fa-chart-bar"></i> Compare items</a></li>
+									<li role="presentation" class="divider"></li>
 									<li role="presentation" style="display: flex; align-items: center; width: 100%;"><a href="underConstruct.html">
 									<i style="color: #157ed2" class="fas fa-comments"></i> 24x7
 											Customer Care</a></li>

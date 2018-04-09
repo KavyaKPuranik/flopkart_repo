@@ -43,114 +43,6 @@
 <div class="body-content outer-top-xs">
   <div class="container">
     <div class="row">
-      <div class="col-md-3 sidebar"> 
-        <div class="sidebar-module-container">
-          <div class="sidebar-filter"> 
-            <!-- ============================================== IMAGE============================================== -->
-            <div class="sidebar-widget wow fadeInUp" style="visibility: hidden; animation-name: none;">
-            	
-              <h5 class="section-title">Hello,</h5>
-              <div class="widget-header">
-                <h4 class="widget-title" id="userID"></h4>
-                <input type="text" id="userEmail" hidden="hidden">
-              </div>
-              <div class="sidebar-widget-body">
-                <ul class="list">
-                  <li>
-						<div id="dp" class="dp"><img id="dp1" height="100px"  src="#" >
-						<span id="tooltiptext" class="tooltiptext"></span></div>
-                  	
-					<div id="no_dp">		
-					<%if (request.getParameter("imgName") != null) { %>
-						<p style="color:red;"><b>Login again to view uploaded dp</b></p>
-					 <% } else { %>		
-						<form id="update_img" method="post" action="UploadServlet" enctype="multipart/form-data">
-						<label for="dpImg" class="custom-file-upload">
-						    <img height="50px" width="50px" src="./images/profile-pic-male_icon.svg">   Choose File
-						</label>
-							<input type="file"  style="display:none"
-								id="dpImg" name="dpImg" accept=".jpg, .jpeg, .png, .JPG, .PNG, .JPEG" required/>
-							<input type="submit" class="btn btn-warning btn-block" value="Set profile picture"/>
-							<input type="text" id="ID" name="ID" hidden="hidden"/>
-						</form>
-					<% } %>
-					</div>
-				 </li>
-                </ul>
-              </div>
-              <!-- /.sidebar-widget-body --> 
-            </div>
-            <!-- /.sidebar-widget --> 
-            <!-- ============================================== IMAGE: END ============================================== --> 
-            
-            
-            <!-- ============================================== Other TAGS ============================================== -->
-          <!----------- Account------------->
-          <br/>
-              <div class="side-menu animate-dropdown outer-bottom-xs">
-          			<div class="head"><i class="fas fa-list"></i><a href="myOrder.jsp" style="color:black" onmouseleave="style='color:black'" onmouseenter="style='color:blue'"> My Orders </a></div>
-          	  </div>
-       <div class="side-menu animate-dropdown outer-bottom-xs">
-          <div class="head"><i class="icon fa fa-user"></i>Account Settings</div>
-			<div class="sidebar-widget wow fadeInUp" style="visibility: hidden; animation-name: none;">
-            	
-              <div class="sidebar-widget-body">
-                <ul class="list">
-                  <li><h5><a href="myProfile.jsp">Profile Information</a></h5></li>
-                  <li><h5><a href="underConstruct.html">Notification Preferences</a></h5></li>
-                </ul>
-              </div>
-              <!-- /.sidebar-widget-body --> 
-            </div>
-            <!-- /.sidebar-widget --> 
-          <!-- /.megamenu-horizontal --> 
-        </div>
-        <div class="side-menu animate-dropdown outer-bottom-xs">
-          <div class="head"><i class="icon fa fa-credit-card"></i>Payments</div>
-			<div class="sidebar-widget wow fadeInUp" style="visibility: hidden; animation-name: none;">
-            	
-              <div class="sidebar-widget-body">
-                <ul class="list">
-                  <li><h5><a href="flopkartAccount.jsp">Flopkart Bank Account</a></h5></li>
-                </ul>
-              </div>
-              <!-- /.sidebar-widget-body --> 
-            </div>
-            <!-- /.sidebar-widget --> 
-          <!-- /.megamenu-horizontal --> 
-        </div>
-        <!-- /.side-menu -->  
-        <div class="side-menu animate-dropdown outer-bottom-xs">
-          <div class="head"><i class="icon fa fa-folder-open"></i>My Stuff</div>
-			<div class="sidebar-widget wow fadeInUp" style="visibility: hidden; animation-name: none;">
-            	
-              <div class="sidebar-widget-body">
-                <ul class="list">
-                  <li><h5><a href="wishlist.jsp">My Wishlist</a></h5></li>
-                </ul>
-              </div>
-              <!-- /.sidebar-widget-body --> 
-            </div>
-            <!-- /.sidebar-widget --> 
-          <!-- /.megamenu-horizontal --> 
-        </div>
-        <!-- /.side-menu --> 
-        
-            <div class="sidebar-widget  wow fadeInUp outer-top-vs " style="visibility: hidden; animation-name: none;">
-            <form id="logout_form" action="./index.jsp">
-              <input type="submit" class="head btn-link" style="color:black;font-weight:bold" value="LOGOUT" onclick="logout();"></input>
-            </form>
-            </div>
-            
-            <!-- ============================================== Other: END ============================================== -->
-
-          </div>
-          <!-- /.sidebar-filter --> 
-        </div>
-        <!-- /.sidebar-module-container --> 
-      </div>
-      <!-- /.sidebar -->
-      <div class="col-md-9 my-wishlist">
       <div class="my-wishlist-page"> 
       	 <div class="table-responsive">
 		<table class="table">
@@ -210,7 +102,6 @@
 	  </div>
     </div>
   </div>
-</div>	  
 <%@include file="footer.jsp" %>
 
 

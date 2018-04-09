@@ -380,7 +380,7 @@ function checkCookie()
     else 
     {	swal("Login failed. Try again.");
       	window.location = "sellerHub.jsp";
-    		logout();
+    	logout();
     }
 }
 

@@ -9,7 +9,7 @@
 <style>
 .box {
   transition: box-shadow .3s;
-  width: 300px;
+  width: 250px;
   height: 300px;
   background: #fff;
   float: left;
@@ -47,7 +47,7 @@
         <!-- /.side-menu -->
         
         <div class="side-menu animate-dropdown outer-bottom-xs">
-          <div style="border-bottom: solid 1px rgba(0, 0, 0, .05); padding: 8px 10px 10px 30px;">
+          <div style="border-bottom: solid 1px rgba(0, 0, 0, .05); padding-left: 8px; padding-bottom: 10px; padding-top:10px">
           <div style="display: inline-block; font-size: 20px; font-weight: bold; font-family: Arial, sans-serif; color: #000; 
             line-height: 32px; ">
     			Hot Combo Deals
@@ -97,6 +97,11 @@
 $(document).ready(function(){
     var ctxPath = "<%=request.getContextPath()%>";
 	headerFunctions(ctxPath);
+	var user = getCookie("user_details");
+    if (user != "") 
+    {
+		setCookie("user_details", user, 30);
+    } 
 	fetchCateg(ctxPath);
 	fetchDeals(ctxPath);
 	getListingDet(ctxPath);

@@ -150,7 +150,7 @@
 								    		<td id="calc" colspan="2">
 								    			<input hidden="hidden" type="number" id='total-text' value='0' >
 								    			<span><span id='total-span'></span>&nbsp;-&nbsp;<span id='min-span'></span></span>
-								    			<input hidden="hidden" type="number" id='minimum' ></span>
+								    			<input hidden="hidden" type="number" id='minimum' >
 								    		</td>
 	
 	
@@ -295,12 +295,6 @@ $(document).ready(function()
 	$("#orderStatus").hide();
     var ctxPath = "<%=request.getContextPath()%>";
 	headerFunctions(ctxPath);    
-	var user = getCookie("user_details");
-    if (user == "") 
-    {
-    	swal("Please Login");
-    	document.location.href="index.jsp";
-    }
 	show_Welcome();
 	fetchCombo();
 })
